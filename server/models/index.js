@@ -8,19 +8,13 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
-      dialect: 'postgres',
-      protocol: 'postgres',
-      host: "ec2-54-235-109-37.compute-1.amazonaws.com",
-      port: 5432,
-      dialectOptions: {
-          ssl: true
-      }
-  });
+    // From the environment, extract the key with the name provided in the config as use_env_variable
+    // and use that to establish a connection to our database.
+    sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  sequelize = new Sequelize(
-    config.database, config.username, config.password, config
-  );
+    sequelize = new Sequelize(
+        config.database, config.username, config.password, config
+    );
 }
 
 fs
