@@ -7,13 +7,20 @@
     "port": 5432,
     "dialect": "postgres"
   },
+//  "production": {
+//    "use_env_variable": "DATABASE_URL",
+//    "client": "postgresql",
+//    "connection": {
+//      "database": "d2s7harvquabgr",
+//      "user": "iziaozkezmazle",
+//      "password": "d0222eb652d5988f157acccb1e2556a3e045e9e7d51a0cf8b53eddbb68dc5d11"
+//    }
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "client": "postgresql",
-    "connection": {
-      "database": "d2s7harvquabgr",
-      "user": "iziaozkezmazle",
-      "password": "d0222eb652d5988f157acccb1e2556a3e045e9e7d51a0cf8b53eddbb68dc5d11"
-    }
+    "username": "iziaozkezmazle",
+    "password": "d0222eb652d5988f157acccb1e2556a3e045e9e7d51a0cf8b53eddbb68dc5d11",
+    "database": "d2s7harvquabgr",
+    "host": "ec2-54-235-109-37.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
