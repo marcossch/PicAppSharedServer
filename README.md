@@ -1,3 +1,7 @@
-# PicAppSS
+# PicAppSharedServer
 
-este es el tutorial que estuve siguiendo: https://scotch.io/tutorials/getting-started-with-node-express-and-postgres-using-sequelize#toc-creating-controllers-and-routing
+##Travis
+
+[![Build Status](https://travis-ci.com/marcossch/PicAppSS.svg?token=xyuaDMLzy8Dpq7quEJdd&branch=master)](https://travis-ci.com/marcossch/PicAppSS)
+
+
