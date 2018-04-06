@@ -6,7 +6,7 @@ module.exports = {
             .create({
                 description: req.body.description,
                 //falta validar userId
-                userId: req.body.userId,
+                userId: req.params.userId,
             })
             .then(post => res.status(201).send(post))
             .catch(error => res.status(400).send(error));
