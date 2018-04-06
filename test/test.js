@@ -5,7 +5,6 @@ describe('aplicacion', function() {
     describe('add function', function() {
         it('adds numbers', function () {
             var result = app.get('/api/users/1');
-            print(result);
             assert.equal(result, 200);
         });
     });
