@@ -8,6 +8,23 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
+        unique : true,
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      manualId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      ref: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      applicationOwner: {
         type: Sequelize.STRING,
         allowNull: false,
       },

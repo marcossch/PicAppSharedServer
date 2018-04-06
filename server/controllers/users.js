@@ -2,14 +2,21 @@ const User = require('../models').User;
 const Post = require('../models').Post;
 
 module.exports = {
-  create(req, res) {
-    return User
-      .create({
-        name: req.body.name,
-      })
-      .then(user => res.status(201).send(user))
-      .catch(error => res.status(400).send(error));
-  },
+    create: function (req, res) {
+        return User
+            .create({
+                name: req.body.username,
+                password: req.body.password,
+                manualId: req.body.id,
+                ref: req.body._rev,
+                applicationOwner: req.body.applicationOwner,
+            })
+            .then(user => res.status(200).send(user))
+            .catch(error => {
+                res.status(400).send({message:"Incumplimiento de precondiciones " +
+                    "(parámetros faltantes) o validación fallida", error})
+            });
+    },
     list(req, res) { //devuelve todos los usuarios
         return User
             .findAll({

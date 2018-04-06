@@ -4,6 +4,22 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        manualId: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        ref: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        applicationOwner: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     });
 
     User.associate = (models) => {
