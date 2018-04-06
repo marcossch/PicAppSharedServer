@@ -1,12 +1,6 @@
-before_install:
-- npm install n
-- sudo ./node_modules/.bin/n stable
-- rm -rf ~/.nvm
-# proceed as normal
-
 language: node_js
 node_js:
- - "stable"
-script: "sudo $(which npm) test"
-services:
-  - postgresql
+ - "9.9.0"
+
+#services:
+#  - postgresql
