@@ -3,20 +3,16 @@ module.exports = {
     queryInterface.createTable('Users', {
       id: {
         allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+        unique: true,
         type: Sequelize.INTEGER,
       },
       name: {
         unique : true,
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
       },
       password: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      manualId: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -24,6 +20,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      token: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        },
       applicationOwner: {
         type: Sequelize.STRING,
         allowNull: false,

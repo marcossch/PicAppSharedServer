@@ -3,12 +3,13 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            primaryKey: true,
         },
-        password: {
-            type: DataTypes.STRING,
+        id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        manualId: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -20,14 +21,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        token: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+
     });
 
-    User.associate = (models) => {
-        User.hasMany(models.Post, {
-            foreignKey: 'userId',
-            as: 'posts',
-        });
+    User.associate = function(models) {
+        // associations can be defined here
     };
-
     return User;
 };
