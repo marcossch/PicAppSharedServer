@@ -2,8 +2,13 @@ language: node_js
 node_js:
  - "9.9.0"
 
-after_success:
-- npm run coveralls
+#script:
+#- istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+
+#after_success:
+#- npm run coveralls
 
 #services:
 #  - postgresql
+
+# en json "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
