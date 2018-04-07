@@ -6,7 +6,8 @@
 
 ## CodeCov
 
-[![codecov](https://codecov.io/gh/RodrigoDeRosa/PicappAppServer/branch/master/graph/badge.svg?token=z6KQ00Bcth)](https://codecov.io/gh/RodrigoDeRosa/PicappAppServer)
+[![codecov](https://codecov.io/gh/marcossch/PicAppSS/branch/master/graph/badge.svg?token=KRZqs2dnwH)](https://codecov.io/gh/marcossch/PicAppSS)
+
 **NOTES**
 
 ###### para levantar las tablas de la db:
