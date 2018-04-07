@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "test": "mocha",
-    "cover": "istanbul cover _mocha"
+    "cover": "istanbul cover _mocha",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +24,10 @@
     "sequelize-heroku": "^1.0.0"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.5",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.17.3"
   }
 }
