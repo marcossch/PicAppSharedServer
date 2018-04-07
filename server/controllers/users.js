@@ -1,5 +1,5 @@
 const User = require('../models').User;
-const Post = require('../models').Post;
+//const Post = require('../models').Post;
 
 module.exports = {
     create: function (req, res) {
@@ -12,7 +12,7 @@ module.exports = {
                 applicationOwner: req.body.applicationOwner,
                 token:req.body.token,
             })
-            .then(user => res.status(200).json({
+            .then(user => res.status(20).json({
                 metadata: {
                     version: "1.0"
                 },
@@ -92,7 +92,7 @@ module.exports = {
                 }
                 return user
                 .update({token: hash(user.name)})
-                .then(() => res.status(200).json({
+                .then(() => res.status(201).json({
                     metadata: {
                         version: "1.0"
                     },
@@ -101,9 +101,13 @@ module.exports = {
                         token: user.token
                     }
                 }))
-                .catch((error) => res.status(400).send(error));
+                    .catch(error => {
+                        res.status(400).send({message:"Incumplimiento de precondiciones " +
+                            "(parámetros faltantes) o validación fallida", error})});
             })
-            .catch((error) => res.status(400).send(error));
+                    .catch(error => {
+                        res.status(400).send({message:"Incumplimiento de precondiciones " +
+                            "(parámetros faltantes) o validación fallida", error})});
     },
 };
 

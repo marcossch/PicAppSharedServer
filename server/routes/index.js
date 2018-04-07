@@ -1,4 +1,5 @@
 const usersController = require('../controllers').users;
+const serversController = require('../controllers').servers;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -6,8 +7,12 @@ module.exports = (app) => {
   }));
 
   //api pedida
+    //users
   app.post('/api/user', usersController.create);
   app.post('/api/token', usersController.validate);
+
+    //servers
+  app.post('/api/servers', serversController.create);
 
   //requests de usuarios
   app.get('/api/users', usersController.list);
