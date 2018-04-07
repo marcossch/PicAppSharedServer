@@ -2,6 +2,10 @@ language: node_js
 node_js:
  - "9.9.0"
 
+env:
+  global:
+    - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
+
 #after_script:
 #- npm run covecov
 
