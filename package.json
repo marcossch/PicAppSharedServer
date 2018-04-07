@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "test": "nyc --reporter=text mocha",
-    "cover": "istanbul cover _mocha"
+    "test": "nyc --reporter=text _mocha",
+    "cover": "istanbul cover _mocha",
+    "codecov": "cat coverage/*/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcossch/PicAppSS"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +28,8 @@
     "sequelize-heroku": "^1.0.0"
   },
   "devDependencies": {
-    "istanbul": "^0.4.5",
+    "isparta": "^4.0.0",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.0.5",
     "nodemon": "^1.17.3",
     "nyc": "^11.6.0"
