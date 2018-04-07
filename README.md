@@ -10,7 +10,7 @@
     $ heroku run sequelize db:migrate
 
 ###### para dar de baja las tablas de la db:
-    $ heroku run sequelize db:migrate undo
+    $ heroku run sequelize db:migrate:undo
 
 
 
