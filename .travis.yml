@@ -10,9 +10,9 @@ env:
 install:
   - npm install -g codecov
 
-script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  - codecov
+#script:
+#  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+#  - codecov
 
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash) -t bffb0e55-cb81-490c-a8db-0c7308611d1f
