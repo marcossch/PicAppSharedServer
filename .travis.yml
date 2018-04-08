@@ -7,6 +7,9 @@ env:
   global:
     - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
 
+after_success:
+- npm run coveralls
+
 #install:
 #  - npm install -g codecov
 
