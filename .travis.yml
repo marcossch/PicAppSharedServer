@@ -9,6 +9,7 @@ node_js:
 
 install:
   - npm install --save-dev codecov
+  - npm install --save-dev mocha
   - npm install --save-dev istanbul
   - npm install --save-dev nyc
   - npm install --save-dev coveralls mocha-lcov-reporter
