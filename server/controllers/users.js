@@ -10,9 +10,8 @@ module.exports = {
                 id: req.body.id,
                 ref: req.body._rev,
                 applicationOwner: req.body.applicationOwner,
-                token:req.body.token,
             })
-            .then(user => res.status(20).json({
+            .then(user => res.status(200).json({
                 metadata: {
                     version: "1.0"
                 },
@@ -102,8 +101,7 @@ module.exports = {
                     }
                 }))
                     .catch(error => {
-                        res.status(400).send({message:"Incumplimiento de precondiciones " +
-                            "(parámetros faltantes) o validación fallida", error})});
+                        res.status(500).send({message:"Unexpected error", error})});
             })
                     .catch(error => {
                         res.status(400).send({message:"Incumplimiento de precondiciones " +
