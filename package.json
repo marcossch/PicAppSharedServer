@@ -6,8 +6,7 @@
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "test": "nyc --reporter=text _mocha",
-    "cover": "istanbul cover _mocha",
-    "codecov": "cat coverage/*/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
+    "cover": "istanbul cover _mocha"
   },
   "repository": {
     "type": "git",
