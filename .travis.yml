@@ -14,8 +14,8 @@ install:
   - npm install --save-dev coveralls mocha-lcov-reporter
 
 script:
-  #- istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  - codecov
+  - istanbul cover _mocha --reporter lcovonly -- -R spec
+  - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
   - npm run coverage
