@@ -6,12 +6,12 @@ env:
   global:
     - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
 
+script:
+- bash <(curl -s https://codecov.io/bash) -cF node_js
+
+
 #after_script:
 #- npm run covecov
-
-#script:
-#- istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-
 
 #services:
 #  - postgresql
