@@ -16,12 +16,20 @@ describe('USER', function() {
             });
         });
 
-        /*it("returns Welcome to the beginning of nothingness.", function() {
+        it("returns Welcome to the beginning of nothingness.", function() {
             request.get(base_url, function (error, response, body) {
                 //expect(body).toBe("Hello World");
                 assert.equal("Welcome to the beginning of nothingness.", body);
                 done();
             });
-        });*/
+        });
+
+        it("returns 200 ok", function () {
+            request.get("https://picappss.herokuapp.com/api/users", function (error, response, body) {
+                assert.equal(200,response.statusCode);
+                done();
+            });
+        });
+
     });
 });

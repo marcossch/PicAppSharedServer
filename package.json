@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "test": "nyc --reporter=text _mocha",
-    "cover": "istanbul cover _mocha"
+    "test": "nyc --reporter=html _mocha",
+    "cover": "istanbul cover _mocha",
+    "codecov": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "sequelize-heroku": "^1.0.0"
   },
   "devDependencies": {
+    "codecov": "^3.0.0",
     "isparta": "^4.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.0.5",
