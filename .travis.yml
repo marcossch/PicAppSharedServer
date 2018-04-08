@@ -3,9 +3,9 @@ language: node_js
 node_js:
  - "9.9.0"
 
-env:
-  global:
-    - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
+#env:
+#  global:
+#    - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
 
 install:
   - npm install --save-dev codecov
@@ -14,7 +14,7 @@ install:
   - npm install --save-dev coveralls mocha-lcov-reporter
 
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  #- istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov
 
 after_success:
