@@ -1,31 +1,52 @@
 const User = require('../models').User;
-//const Post = require('../models').Post;
+const Server = require('../models').Server;
 
 module.exports = {
     create: function (req, res) {
-        return User
-            .create({
-                name: req.body.username,
-                password: req.body.password,
-                id: req.body.id,
-                ref: req.body._rev,
-                applicationOwner: req.body.applicationOwner,
-            })
-            .then(user => res.status(200).json({
-                metadata: {
-                    version: "1.0"
-                },
-                user: {
-                    id: user.id,
-                    _rev: user.ref,
-                    applicationOwner: user.applicationOwner,
-                    username: user.name
+
+        //se valida la ApiKey
+        Server.find({
+            where: {token: req.params.apiKey}
+        })
+            .then(server => {
+                if (!server) {
+                    return res.status(403).send({
+                        message: 'Server Not Found',
+                    });
                 }
-            }))
-            .catch(error => {
-                res.status(400).send({message:"Incumplimiento de precondiciones " +
-                    "(parámetros faltantes) o validación fallida", error})
-            });
+                else {
+
+                    //si el ApiKey se valido entonces se crea el usuario
+
+                    User.create({
+                        name: req.body.username,
+                        password: req.body.password,
+                        id: req.body.id,
+                        ref: req.body._rev,
+                        applicationOwner: req.body.applicationOwner,
+                    })
+                        .then(user => res.status(200).json({
+                            metadata: {
+                                version: "1.0"
+                            },
+                            user: {
+                                id: user.id,
+                                _rev: user.ref,
+                                applicationOwner: user.applicationOwner,
+                                username: user.name
+                            }
+                        }))
+                        .catch(error => {
+                            res.status(400).send({
+                                message: "Incumplimiento de precondiciones " +
+                                "(parámetros faltantes) o validación fallida", error
+                            })
+                        });
+
+                }
+            })
+            .catch(error => res.status(500).send(error));
+
     },
     list(req, res) { //devuelve todos los usuarios
         return User
@@ -116,6 +137,9 @@ function hash(str){
     if (str.length == 0) return hash;
     for (i = 0; i < str.length; i++) {
         char = str.charCodeAt(i);		hash = ((hash<<5)-hash)+char;		hash = hash & hash; // Convert to 32bit integer
+    }
+    if (hash < 0) {
+        hash = hash * -1;
     }
     return hash;
 }

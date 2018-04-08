@@ -38,12 +38,12 @@ module.exports = {
                     "(parámetros faltantes) o validación fallida", error})
             });
     },
-    // list(req, res) { //devuelve todos los usuarios
-    //     return User
-    //         .findAll()
-    //         .then(users => res.status(200).send(users))
-    //         .catch(error => res.status(400).send(error));
-    // },
+    list(req, res) { //devuelve todos los usuarios
+        return Server
+            .findAll()
+            .then(server => res.status(200).send(server))
+            .catch(error => res.status(400).send(error));
+    },
     // retrieve(req, res) {
     //     return User
     //         .findByPrimary(req.params.username)
