@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "test": "nyc --reporter=html _mocha",
+    "test": "nyc --reporter=html --reporter=text _mocha",
     "cover": "istanbul cover _mocha",
-    "codecov": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov"
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,11 @@
   },
   "devDependencies": {
     "codecov": "^3.0.0",
+    "coveralls": "^3.0.0",
     "isparta": "^4.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.0.5",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.17.3",
     "nyc": "^11.6.0"
   }

@@ -29,5 +29,7 @@ module.exports = (app) => {
   //         message: 'Method Not Allowed',
   //     }));
 
-
+/*    "codecov": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",*/
 };
