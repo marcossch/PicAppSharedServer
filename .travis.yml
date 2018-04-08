@@ -18,7 +18,7 @@ script:
   - codecov
 
 after_success:
-  - npm run coveralls
+  - npm run coverage
 
 #script:
 #  - bash <(curl -s https://codecov.io/bash) -t bffb0e55-cb81-490c-a8db-0c7308611d1f
