@@ -7,8 +7,11 @@ env:
   global:
     - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
 
-after_success:
-- npm run coverage
+install:
+  - npm install -g codecov
+script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
 
 #install:
 #  - npm install -g codecov
