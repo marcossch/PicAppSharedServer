@@ -11,15 +11,17 @@ install:
   - npm install --save-dev codecov
   - npm install --save-dev istanbul
   - npm install --save-dev nyc
+  - npm install --save-dev coveralls mocha-lcov-reporter
+
+script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
+
+after_success:
+  - npm run coveralls
 
 #script:
-  #- istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  #- codecov
-
-#after_success:
 #  - bash <(curl -s https://codecov.io/bash) -t bffb0e55-cb81-490c-a8db-0c7308611d1f
-
-#script:
 #- bash <(curl -s https://codecov.io/bash) -cF node_js
 
 
