@@ -1,5 +1,6 @@
 const usersController = require('../controllers').users;
 const serversController = require('../controllers').servers;
+const filesController = require('../controllers').files;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -27,13 +28,14 @@ module.exports = (app) => {
   app.put('/api/users/:username', usersController.update);
   app.delete('/api/users/:username', usersController.destroy);
 
+  //requests de files
+  app.post('/api/files', filesController.create);
+
+
   //For any other request method on posts, we're going to return "Method Not Allowed"
   // app.all('/api/users/:userId/post', (req, res) =>
   //     res.status(405).send({
   //         message: 'Method Not Allowed',
   //     }));
 
-/*    "codecov": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",*/
 };
