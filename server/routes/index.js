@@ -8,20 +8,24 @@ module.exports = (app) => {
 
   //api pedida
     //users
-  app.post('/api/user/:apiKey', usersController.create);
-  app.post('/api/token', usersController.validate);
+    app.post('/api/user/:apiKey', usersController.create);
+    app.post('/api/token', usersController.validate);
 
     //servers
-  app.post('/api/servers', serversController.create);
+    app.post('/api/servers/:apiKey', serversController.create);
+    app.get('/api/servers/:serverId/:apiKey', serversController.retrieve);
+    app.put('/api/servers/:serverId/:apiKey', serversController.update);
+    app.delete('/api/servers/:serverId/:apiKey', serversController.destroy);
+    app.post('/api/servers/:serverId/:apiKey', serversController.tokenReset);
+
+  //requests de servers
+  app.get('/api/servers', serversController.list);
 
   //requests de usuarios
   app.get('/api/users', usersController.list);
   app.get('/api/users/:username', usersController.retrieve);
   app.put('/api/users/:username', usersController.update);
   app.delete('/api/users/:username', usersController.destroy);
-
-  //requests de servers
-  app.get('/api/servers', serversController.list);
 
   //For any other request method on posts, we're going to return "Method Not Allowed"
   // app.all('/api/users/:userId/post', (req, res) =>

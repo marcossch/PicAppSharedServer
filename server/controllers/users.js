@@ -10,8 +10,8 @@ module.exports = {
         })
             .then(server => {
                 if (!server) {
-                    return res.status(403).send({
-                        message: 'Server Not Found',
+                    return res.status(401).send({
+                        message: 'Unauthorized',
                     });
                 }
                 else {
