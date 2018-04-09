@@ -29,7 +29,7 @@ module.exports = (app) => {
   app.delete('/api/users/:username', usersController.destroy);
 
   //requests de files
-  app.post('/api/files', filesController.create);
+  app.post('/api/files/:apiKey', filesController.create);
   app.get('/api/files', filesController.list);
 
 
