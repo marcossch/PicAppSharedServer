@@ -30,6 +30,7 @@ module.exports = (app) => {
 
   //requests de files
   app.post('/api/files', filesController.create);
+  app.get('/api/files', filesController.list);
 
 
   //For any other request method on posts, we're going to return "Method Not Allowed"

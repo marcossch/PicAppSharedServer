@@ -2,7 +2,7 @@ const File = require('../models').file;
 
 module.exports = {
 
-    /*CREATE*/
+    /* CREATE FILE*/
     create: function (req, res) {
         return File
             .create({
@@ -38,6 +38,13 @@ module.exports = {
             });
 
         },
-    /* */
+    /* GET ALL FILES */
+
+    list(req, res) {
+
+        File.findAll()
+            .then(file => res.status(200).send(file))
+            .catch(error => res.status(400).send(error));
+    },
 };
 
