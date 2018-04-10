@@ -16,10 +16,10 @@ describe('USER', function() {
             });
         });
 
-        it("returns Welcome to the beginning of nothingness.", function() {
+        it("returns Welcome to PicApp web services.", function() {
             request.get(base_url, function (error, response, body) {
                 //expect(body).toBe("Hello World");
-                assert.equal("Welcome to the beginning of nothingness.", body);
+                assert.equal("Welcome to PicApp web services.", body);
                 done();
             });
         });
