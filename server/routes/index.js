@@ -31,6 +31,8 @@ module.exports = (app) => {
   //requests de files
   app.post('/api/files/:apiKey', filesController.create);
   app.get('/api/files', filesController.list);
+  app.get('/api/files/:fileId/:apiKey', filesController.retrieve);
+  app.put('/api/files/:fileId/:apiKey', filesController.update);
 
 
   //For any other request method on posts, we're going to return "Method Not Allowed"
