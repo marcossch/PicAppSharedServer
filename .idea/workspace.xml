@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92f1579a-3bce-4c4b-a6b6-41ca864ebbf7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nyc_output/a4106700685dcea26a5e3d0d066602cc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nyc_output/b0154f1424a59d1206ef403f5f1e24be.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nyc_output/501faa2fe87a06422018c34f9729b691.json" beforeDir="false" afterPath="$PROJECT_DIR$/.nyc_output/501faa2fe87a06422018c34f9729b691.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nyc_output/63cf67191954bc4ca8d848ba5f78f42f.json" beforeDir="false" afterPath="$PROJECT_DIR$/.nyc_output/63cf67191954bc4ca8d848ba5f78f42f.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -240,12 +237,12 @@
       <workItem from="1523198079335" duration="6373000" />
       <workItem from="1523280739638" duration="6540000" />
       <workItem from="1523304166442" duration="4609000" />
-      <workItem from="1523364960747" duration="13663000" />
+      <workItem from="1523364960747" duration="14264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39441000" />
+    <option name="totallyTimeSpent" value="40042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="3066" height="1765" extended-state="6" />
