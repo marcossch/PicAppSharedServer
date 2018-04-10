@@ -9,7 +9,7 @@
 [![codecov](https://codecov.io/gh/marcossch/PicAppSS/branch/master/graph/badge.svg?token=KRZqs2dnwH)](https://codecov.io/gh/marcossch/PicAppSS)
 
 ## Heroku
-![Heroku](https://picappss.herokuapp.com/)
+[Heroku](https://picappss.herokuapp.com/)
 
 Heroku is integrated automatically via GitHub.
 
