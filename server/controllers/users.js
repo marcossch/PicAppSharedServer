@@ -4,18 +4,18 @@ const Server = require('../models').Server;
 module.exports = {
     create: function (req, res) {
 
-        //se valida la ApiKey
-        Server.find({
-            where: {token: req.params.apiKey}
-        })
-            .then(server => {
-                if (!server) {
-                    return res.status(401).send({
-                        code: '401',
-                        message: 'Unauthorized',
-                    });
-                }
-                else {
+        // //se valida la ApiKey
+        // Server.find({
+        //     where: {token: req.params.apiKey}
+        // })
+        //     .then(server => {
+        //         if (!server) {
+        //             return res.status(401).send({
+        //                 code: '401',
+        //                 message: 'Unauthorized',
+        //             });
+        //         }
+        //         else {
 
                     //si el ApiKey se valido entonces se crea el usuario
 
@@ -45,12 +45,12 @@ module.exports = {
                             })
                         });
 
-                }
-            })
-            .catch(error => res.status(500).send({
-                code: '500',
-                message: 'Unexpected error',
-                error}));
+            //         }
+            // })
+            // .catch(error => res.status(500).send({
+            //     code: '500',
+            //     message: 'Unexpected error',
+            //     error}));
 
     },
     list(req, res) { //devuelve todos los usuarios

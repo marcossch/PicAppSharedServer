@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92f1579a-3bce-4c4b-a6b6-41ca864ebbf7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,11 +25,13 @@
       <file leaf-file-name="users.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/controllers/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
+            <state relative-caret-position="669">
+              <caret line="52" column="28" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="52" selection-end-column="28" />
               <folding>
-                <element signature="e#136#1941#0" />
                 <element signature="e#1962#2327#0" />
+                <element signature="e#2352#2959#0" />
+                <element signature="e#2982#4153#0" />
+                <element signature="e#4177#5182#0" />
                 <element signature="e#5218#6313#0" />
               </folding>
             </state>
@@ -41,12 +41,13 @@
       <file leaf-file-name="servers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/controllers/servers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1049">
-              <caret line="150" column="65" selection-start-line="149" selection-start-column="32" selection-end-line="150" selection-end-column="65" />
+            <state relative-caret-position="714">
+              <caret line="280" column="25" lean-forward="true" selection-start-line="280" selection-start-column="25" selection-end-line="280" selection-end-column="25" />
               <folding>
                 <element signature="e#136#2078#0" />
                 <element signature="e#2099#2954#0" />
                 <element signature="e#2979#4720#0" />
+                <element signature="e#4743#7194#0" />
                 <element signature="e#7218#8716#0" />
                 <element signature="e#8754#11267#0" />
               </folding>
@@ -235,12 +236,12 @@
       <workItem from="1523198079335" duration="6373000" />
       <workItem from="1523280739638" duration="6540000" />
       <workItem from="1523304166442" duration="4609000" />
-      <workItem from="1523364960747" duration="3692000" />
+      <workItem from="1523364960747" duration="3837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29470000" />
+    <option name="totallyTimeSpent" value="29615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="3066" height="1765" extended-state="6" />
@@ -585,20 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/servers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1049">
-          <caret line="150" column="65" selection-start-line="149" selection-start-column="32" selection-end-line="150" selection-end-column="65" />
-          <folding>
-            <element signature="e#136#2078#0" />
-            <element signature="e#2099#2954#0" />
-            <element signature="e#2979#4720#0" />
-            <element signature="e#7218#8716#0" />
-            <element signature="e#8754#11267#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -606,13 +593,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/servers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="280" column="25" lean-forward="true" selection-start-line="280" selection-start-column="25" selection-end-line="280" selection-end-column="25" />
+          <folding>
+            <element signature="e#136#2078#0" />
+            <element signature="e#2099#2954#0" />
+            <element signature="e#2979#4720#0" />
+            <element signature="e#4743#7194#0" />
+            <element signature="e#7218#8716#0" />
+            <element signature="e#8754#11267#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/controllers/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
+        <state relative-caret-position="669">
+          <caret line="52" column="28" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="52" selection-end-column="28" />
           <folding>
-            <element signature="e#136#1941#0" />
             <element signature="e#1962#2327#0" />
+            <element signature="e#2352#2959#0" />
+            <element signature="e#2982#4153#0" />
+            <element signature="e#4177#5182#0" />
             <element signature="e#5218#6313#0" />
           </folding>
         </state>
