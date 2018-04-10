@@ -11,6 +11,7 @@ module.exports = {
             .then(server => {
                 if (!server) {
                     return res.status(401).send({
+                        code: '401',
                         message: 'Unauthorized',
                     });
                 }
@@ -38,6 +39,7 @@ module.exports = {
                         }))
                         .catch(error => {
                             res.status(400).send({
+                                code: '400',
                                 message: "Incumplimiento de precondiciones " +
                                 "(parámetros faltantes) o validación fallida", error
                             })
@@ -45,14 +47,21 @@ module.exports = {
 
                 }
             })
-            .catch(error => res.status(500).send(error));
+            .catch(error => res.status(500).send({
+                code: '500',
+                message: 'Unexpected error',
+                error}));
 
     },
     list(req, res) { //devuelve todos los usuarios
         return User
             .findAll()
             .then(users => res.status(200).send(users))
-            .catch(error => res.status(400).send(error));
+            .catch(error => res.status(400).send({
+                code: '400',
+                message: "Incumplimiento de precondiciones " +
+                "(parámetros faltantes) o validación fallida", error
+            }));
     },
     retrieve(req, res) {
         return User
@@ -60,12 +69,17 @@ module.exports = {
             .then(user => {
                 if (!user) {
                     return res.status(404).send({
+                        code: '404',
                         message: 'User Not Found',
                     });
                 }
                 return res.status(200).send(user);
             })
-            .catch(error => res.status(400).send(error));
+            .catch(error => res.status(400).send({
+                code: '400',
+                message: "Incumplimiento de precondiciones " +
+                "(parámetros faltantes) o validación fallida", error
+            }));
     },
     update(req, res) {
         return User
@@ -73,6 +87,7 @@ module.exports = {
             .then(user => {
                 if (!user) {
                     return res.status(404).send({
+                        code: '404',
                         message: 'User Not Found',
                     });
                 }
@@ -81,9 +96,17 @@ module.exports = {
                     //se pasa con los nombres de los parametros por el body
                     .update(req.body, { fields: Object.keys(req.body) })
                     .then(() => res.status(200).send(user))  // Send back the updated user.
-                    .catch((error) => res.status(400).send(error));
+                    .catch((error) => res.status(400).send({
+                        code: '400',
+                        message: "Incumplimiento de precondiciones " +
+                        "(parámetros faltantes) o validación fallida", error
+                    }));
             })
-            .catch((error) => res.status(400).send(error));
+            .catch((error) => res.status(400).send({
+                code: '400',
+                message: "Incumplimiento de precondiciones " +
+                "(parámetros faltantes) o validación fallida", error
+            }));
     },
     destroy(req, res) {
         return User
@@ -91,15 +114,25 @@ module.exports = {
             .then(user => {
                 if (!user) {
                     return res.status(400).send({
+                        code: '400',
                         message: 'User Not Found',
                     });
                 }
                 return user
                     .destroy()
-                    .then(() => res.status(200).send({ message: 'User deleted successfully.' }))
-                    .catch(error => res.status(400).send(error));
+                    .then(() => res.status(204).send({
+                        message: 'User deleted successfully.' }))
+                    .catch(error => res.status(400).send({
+                        code: '400',
+                        message: "Incumplimiento de precondiciones " +
+                        "(parámetros faltantes) o validación fallida", error
+                    }));
             })
-            .catch(error => res.status(400).send(error));
+            .catch(error => res.status(400).send({
+                code: '400',
+                message: "Incumplimiento de precondiciones " +
+                "(parámetros faltantes) o validación fallida", error
+            }));
     },
     validate: function (req, res) {
         return User
@@ -107,6 +140,7 @@ module.exports = {
             .then(user => {
                 if (!user) {
                     return res.status(404).send({
+                        code: '404',
                         message: 'User Not Found',
                     });
                 }
@@ -122,10 +156,11 @@ module.exports = {
                     }
                 }))
                     .catch(error => {
-                        res.status(500).send({message:"Unexpected error", error})});
+                        res.status(500).send({code: '500', message:"Unexpected error", error})});
             })
                     .catch(error => {
-                        res.status(400).send({message:"Incumplimiento de precondiciones " +
+                        res.status(400).send({code: '400',
+                            message:"Incumplimiento de precondiciones " +
                             "(parámetros faltantes) o validación fallida", error})});
     },
 };
