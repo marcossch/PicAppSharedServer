@@ -6,7 +6,7 @@ module.exports = {
 
         //se valida la ApiKey
         Server.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.ApplicationToken}
         })
             .then(server => {
                 if (!server) {

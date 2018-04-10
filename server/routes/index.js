@@ -9,18 +9,17 @@ module.exports = (app) => {
 
   //api pedida
     //users
-    app.post('/api/user/:apiKey', usersController.create);
+    app.post('/api/user', usersController.create);
     app.post('/api/token', usersController.validate);
 
     //servers
-    app.post('/api/servers/:apiKey', serversController.create);
-    app.get('/api/servers/:serverId/:apiKey', serversController.retrieve);
-    app.put('/api/servers/:serverId/:apiKey', serversController.update);
-    app.delete('/api/servers/:serverId/:apiKey', serversController.destroy);
-    app.post('/api/servers/:serverId/:apiKey', serversController.tokenReset);
+    app.post('/api/servers', serversController.create);
+    app.get('/api/servers/:serverId', serversController.retrieve);
+    app.put('/api/servers/:serverId', serversController.update);
+    app.delete('/api/servers/:serverId', serversController.destroy);
+    app.post('/api/servers/:serverId', serversController.tokenReset);
+    app.get('/api/servers', serversController.list);
 
-  //requests de servers
-  app.get('/api/servers', serversController.list);
 
   //requests de usuarios
   app.get('/api/users/', usersController.list);

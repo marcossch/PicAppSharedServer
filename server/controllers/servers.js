@@ -4,9 +4,9 @@ const User = require('../models').User;
 module.exports = {
     create: function (req, res) {
 
-        //se valida la ApiKey
+        //se valida la BusinessToken
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
@@ -56,9 +56,9 @@ module.exports = {
     },
     list(req, res) { //devuelve todos los usuarios
 
-        // //se valida la ApiKey
+        // //se valida la BusinessToken
          User.find({
-             where: {token: req.params.apiKey}
+             where: {token: req.query.BusinessToken}
          })
              .then(user => {
                  if (!user) {
@@ -79,9 +79,9 @@ module.exports = {
     },
     retrieve(req, res) {
 
-        //se valida la ApiKey
+        //se valida la BusinessToken
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
@@ -123,9 +123,9 @@ module.exports = {
     },
     update(req, res) {
 
-        //se valida la ApiKey
+        //se valida la BusinessToken
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
@@ -178,9 +178,9 @@ module.exports = {
     },
     destroy(req, res) {
 
-        //se valida la ApiKey
+        //se valida la BusinessToken
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
@@ -213,9 +213,9 @@ module.exports = {
     },
     tokenReset: function (req, res) {
 
-        //se valida la ApiKey
+        //se valida la BusinessToken
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
