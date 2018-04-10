@@ -9,7 +9,7 @@ module.exports = (app) => {
 
   //api pedida
     //users
-    app.post('/api/user/:apiKey', usersController.create);
+    app.post('/api/user', usersController.create);
     app.post('/api/token', usersController.validate);
 
     //servers
