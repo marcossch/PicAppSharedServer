@@ -1,6 +1,6 @@
 var assert = require('assert');
 var request = require("request");
-var base_url = "https://picappss.herokuapp.com/"
+var base_url = "https://picappss.herokuapp.com/";
 
 describe('USER', function() {
            assert(200,200);
