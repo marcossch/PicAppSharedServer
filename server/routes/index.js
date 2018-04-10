@@ -23,7 +23,7 @@ module.exports = (app) => {
   app.get('/api/servers', serversController.list);
 
   //requests de usuarios
-  app.get('/api/users', usersController.list);
+  app.get('/api/users/', usersController.list);
   app.get('/api/users/:username', usersController.retrieve);
   app.put('/api/users/:username', usersController.update);
   app.delete('/api/users/:username', usersController.destroy);

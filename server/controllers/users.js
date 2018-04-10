@@ -57,10 +57,9 @@ module.exports = {
         return User
             .findAll()
             .then(users => res.status(200).send(users))
-            .catch(error => res.status(400).send({
-                code: '400',
-                message: "Incumplimiento de precondiciones " +
-                "(parámetros faltantes) o validación fallida", error
+            .catch(error => res.status(500).send({
+                code: '500',
+                message: "Unexpected error", error
             }));
     },
     retrieve(req, res) {
@@ -73,7 +72,17 @@ module.exports = {
                         message: 'User Not Found',
                     });
                 }
-                return res.status(200).send(user);
+                return res.status(200).json({
+                    metadata: {
+                        version: "1.0"
+                    },
+                    user: {
+                        id: user.id,
+                        _rev: user.ref,
+                        applicationOwner: user.applicationOwner,
+                        username: user.name
+                    }
+                });
             })
             .catch(error => res.status(400).send({
                 code: '400',
@@ -94,8 +103,22 @@ module.exports = {
                 return user
                     //se puede actualizar cualquier cosa menos el nombre
                     //se pasa con los nombres de los parametros por el body
-                    .update(req.body, { fields: Object.keys(req.body) })
-                    .then(() => res.status(200).send(user))  // Send back the updated user.
+                    .update({
+                        name: req.body.name || user.name,
+                        ref: req.body._rev || user.ref,
+                        password: req.body.password || user.password,
+                    })
+                    .then(() => res.status(200).json({
+                        metadata: {
+                            version: "1.0"
+                        },
+                        user: {
+                            id: user.id,
+                            _rev: user.ref,
+                            applicationOwner: user.applicationOwner,
+                            username: user.name
+                        }
+                    }))  // Send back the updated user.
                     .catch((error) => res.status(400).send({
                         code: '400',
                         message: "Incumplimiento de precondiciones " +
@@ -113,8 +136,8 @@ module.exports = {
             .findByPrimary(req.params.username)
             .then(user => {
                 if (!user) {
-                    return res.status(400).send({
-                        code: '400',
+                    return res.status(404).send({
+                        code: '404',
                         message: 'User Not Found',
                     });
                 }
@@ -122,10 +145,9 @@ module.exports = {
                     .destroy()
                     .then(() => res.status(204).send({
                         message: 'User deleted successfully.' }))
-                    .catch(error => res.status(400).send({
-                        code: '400',
-                        message: "Incumplimiento de precondiciones " +
-                        "(parámetros faltantes) o validación fallida", error
+                    .catch(error => res.status(500).send({
+                        code: '500',
+                        message: "Unexpected error", error
                     }));
             })
             .catch(error => res.status(400).send({
