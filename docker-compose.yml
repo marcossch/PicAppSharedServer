@@ -1,0 +1,43 @@
+#version: '2'
+#services:
+#  postgres:
+#    image: postgres
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      POSTGRES_USER: marc
+#      POSTGRES_DB: webusersdb
+#  web:
+#    build: .
+#    command: npm run start:dev
+#    volumes:
+#      - .:/usr/app/
+#      - /usr/app/node_modules
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - postgres
+#    environment:
+#      DATABASE_URL: postgres://marc@postgres/webusersdb
+
+version: '2'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postman_dev
+  web:
+    build: .
+    command: npm run start:dev
+    image: picapp/postman
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres@db/postman_dev

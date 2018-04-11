@@ -1,9 +1,10 @@
 {
   "development": {
-    "username": "marc",
-    "password": "1234",
-    "database": "webusersdb",
-    "host": "127.0.0.1",
+    "use_env_variable": "DATABASE_URL",
+    "username": "postgres",
+    "password": null,
+    "database": "postman_dev",
+    "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
   },

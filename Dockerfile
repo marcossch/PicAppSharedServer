@@ -1,7 +1,13 @@
-FROM node:7
+FROM node:8.4.0
+
+# Set /app as workdir
+RUN mkdir /app
+ADD . /app
 WORKDIR /app
-COPY package.json /app
-RUN npm install
-COPY . /app
-CMD npm run start:dev
-EXPOSE 8081
+
+COPY package.json .
+COPY package-lock.json .
+
+RUN npm install --quiet
+
+COPY . .
