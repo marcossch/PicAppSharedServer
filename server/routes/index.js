@@ -28,10 +28,12 @@ module.exports = (app) => {
   app.delete('/api/users/:username', usersController.destroy);
 
   //requests de files
-  app.post('/api/files/:apiKey', filesController.create);
+  app.post('/api/files', filesController.create);
   app.get('/api/files', filesController.list);
-  app.get('/api/files/:fileId/:apiKey', filesController.retrieve);
-  app.put('/api/files/:fileId/:apiKey', filesController.update);
+  app.get('/api/files/:fileId', filesController.retrieve);
+  app.put('/api/files/:fileId', filesController.update);
+  app.delete('/api/files/:fileId', filesController.destroy);
+  //app.post('/api/files/upload', filesController.upload);
 
 
   //For any other request method on posts, we're going to return "Method Not Allowed"
