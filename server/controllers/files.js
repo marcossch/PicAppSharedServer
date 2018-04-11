@@ -1,5 +1,6 @@
 const File = require('../models').file;
 const User = require('../models').User;
+const Server = require('../models').Server;
 
 module.exports = {
 
@@ -7,7 +8,7 @@ module.exports = {
     create: function (req, res) {
 
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
 
@@ -64,17 +65,32 @@ module.exports = {
 
     list(req, res) {
 
-        File.findAll()
-            .then(file => res.status(200).send(file))
-            .catch(error => res.status(400).send(error));
+        Server.find({
+            where: {token: req.query.ApplicationToken}
+        })
+            .then(server => {
+                if (!server) {
+                    return res.status(401).send({
+                        code: '401',
+                        message: 'Unauthorized',
+                    });
+                }
+                else {
+                File.findAll()
+                    .then(file => res.status(200).send(file))
+                    .catch(error => res.status(500).send({
+                        code: '500',
+                        message: "Unexpected error", error}));
+                }
+            }).catch(error => res.status(500).send({code: '500', message:"Unexpected error", error}));
     },
 
-    /* GET FILE ( ID ) */
+    /* Get File by ID */
 
     retrieve(req, res) {
 
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
@@ -122,11 +138,12 @@ module.exports = {
 
         //se valida la ApiKey
         User.find({
-            where: {token: req.params.apiKey}
+            where: {token: req.query.BusinessToken}
         })
             .then(user => {
                 if (!user) {
                     return res.status(401).send({
+                        code:'401',
                         message: 'Unauthorized',
                     });
                 }
@@ -143,7 +160,7 @@ module.exports = {
                             }
                             return file
                                 .update({
-                                    name: req.body.name || file.name,
+                                    name: req.body.filename || file.name,
                                     rev: req.body._rev || file.rev,
                                 })
                                 .then(() => res.status(200).json({
@@ -174,6 +191,64 @@ module.exports = {
             .catch(error => res.status(500).send({code: '500', message:"Unexpected error", error}));
     },
 
-    /* */
+    /* Destroy File by ID */
+
+    destroy(req, res) {
+
+        //se valida la BusinessToken
+        User.find({
+            where: {token: req.query.BusinessToken}
+        })
+            .then(user => {
+                if (!user) {
+                    return res.status(401).send({
+                        code: '401',
+                        message: 'Unauthorized',
+                    });
+                }
+                else {
+
+                    File.findByPrimary(req.params.fileId)
+                        .then(file => {
+                            if (!file) {
+                                return res.status(404).send({
+                                    code: '404',
+                                    message: 'File Not Found',
+                                });
+                            }
+                            return file
+                                .destroy()
+                                .then(() => res.status(204).send({ code:'204', message: 'File deleted successfully.' }))
+                                .catch(error => res.status(400).send({code:'400', message:"Incumplimiento de precondiciones " +
+                                    "(parámetros faltantes) o validación fallida", error}));
+                        })
+                        .catch(error => res.status(400).send({code:'400', message:"Incumplimiento de precondiciones " +
+                            "(parámetros faltantes) o validación fallida", error}));
+                }
+            })
+            .catch(error => res.status(500).send({code: '500', message:"Unexpected error", error}));
+    },
+
+
+    /* Upload de un File */
+
+    /*update(req, res) {
+
+        Server.find({
+            where: {token: req.query.ApplicationToken}
+        })
+            .then(server => {
+                if (!server) {
+                    return res.status(401).send({
+                        code: '401',
+                        message: 'Unauthorized',
+                    });
+                }
+                else {
+
+                }
+            }).catch(error => res.status(500).send({code: '500', message:"Unexpected error", error}));
+    },*/
+
 };
 
