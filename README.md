@@ -56,5 +56,7 @@ You can see the interface of this Application Server
 ###### para dar de baja las tablas de la db:
     $ heroku run sequelize db:migrate:undo
 
+###### Para correr las pruebas localmente:
+    $ npm run uTest
 
 
