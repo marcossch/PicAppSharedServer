@@ -11,8 +11,8 @@ install:
   - npm install --save-dev mocha
   - npm install --save-dev chai
   - npm install --save-dev chai-http
-  - npm install --save-dev sinon
 
+  #de aca para abajo veo mañana con cover
   - npm install --save-dev nyc
   - npm install --save-dev codecov
   - npm install --save-dev istanbul
