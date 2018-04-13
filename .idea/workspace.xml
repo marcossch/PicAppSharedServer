@@ -43,8 +43,14 @@
       <file leaf-file-name="servers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/controllers/servers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="248" column="69" selection-start-line="248" selection-start-column="69" selection-end-line="248" selection-end-column="69" />
+            <state relative-caret-position="723">
+              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+              <folding>
+                <element signature="e#2112#2980#0" />
+                <element signature="e#3005#4759#0" />
+                <element signature="e#4782#7246#0" />
+                <element signature="e#7270#8781#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -278,12 +284,12 @@
       <workItem from="1523400601090" duration="1978000" />
       <workItem from="1523453505341" duration="11857000" />
       <workItem from="1523468512521" duration="6878000" />
-      <workItem from="1523631215388" duration="127000" />
+      <workItem from="1523631215388" duration="380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60882000" />
+    <option name="totallyTimeSpent" value="61135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="3066" height="1765" extended-state="6" />
@@ -656,8 +662,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/controllers/servers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="248" column="69" selection-start-line="248" selection-start-column="69" selection-end-line="248" selection-end-column="69" />
+        <state relative-caret-position="723">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+          <folding>
+            <element signature="e#2112#2980#0" />
+            <element signature="e#3005#4759#0" />
+            <element signature="e#4782#7246#0" />
+            <element signature="e#7270#8781#0" />
+          </folding>
         </state>
       </provider>
     </entry>

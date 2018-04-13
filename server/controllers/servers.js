@@ -18,13 +18,13 @@ module.exports = {
                 else {
 
                     Server.create({
-                name: req.body.username,
+                name: req.body.name,
                 id: req.body.id,
                 ref: req.body._rev,
                 createdBy: req.body.createdBy,
                 createdAt: req.body.createdTime,
                 updatedAt: req.body.lastConnection,
-                token: hash(String(req.body.username)),
+                token: hash(String(req.body.name)),
 
             })
                     .then(server => res.status(201).json({
@@ -246,7 +246,7 @@ module.exports = {
                                         id: server.id,
                                         _rev: server.ref,
                                         createdBy: server.createdBy,
-                                        createdAt: server.createdTime,
+                                        createdTime: server.createdAt,
                                         name: server.name,
                                         lastConnection: server.updatedAt
                                     },
