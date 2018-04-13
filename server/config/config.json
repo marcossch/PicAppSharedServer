@@ -18,10 +18,10 @@
     }
   },
   "test": {
-    "username": "postgres",
-    "password": null,
-    "database": "postman_dev",
-    "host": "localhost",
+    "username": "marc",
+    "password": "1234",
+    "database": "webusersdb",
+    "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   }

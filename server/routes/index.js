@@ -9,7 +9,8 @@ module.exports = (app) => {
 
   //api pedida
     //users
-    app.post('/api/user', usersController.create);
+    app.post('/api/user', usersController.create); /**/
+    app.post('/api/user/super', usersController.supercreate);/*metodo solo para pruebas*/
     app.post('/api/token', usersController.validate);
 
     //servers
@@ -22,10 +23,10 @@ module.exports = (app) => {
 
 
   //requests de usuarios
-  app.get('/api/users/', usersController.list);
-  app.get('/api/users/:username', usersController.retrieve);
-  app.put('/api/users/:username', usersController.update);
-  app.delete('/api/users/:username', usersController.destroy);
+  app.get('/api/users/', usersController.list); /**/
+  app.get('/api/users/:username', usersController.retrieve); /**/
+  app.put('/api/users/:username', usersController.update); /**/
+  app.delete('/api/users/:username', usersController.destroy);/**/
 
   //requests de files
   app.post('/api/files', filesController.create);

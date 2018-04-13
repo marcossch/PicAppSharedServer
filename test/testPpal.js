@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test';
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../app');
@@ -6,7 +7,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('Get a la pagina principal', function() {
+describe('Get a la pagina principal: /', function() {
 
     it('Check Status 200', function(done) {
         chai.request(server)
