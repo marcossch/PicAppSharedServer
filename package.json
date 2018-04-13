@@ -5,13 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "test": "nyc --reporter=html --reporter=text _mocha",
     "cover": "istanbul cover _mocha",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f",
     "uTest": "sequelize db:migrate && npm run test && sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo"
-   },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marcossch/PicAppSS"
