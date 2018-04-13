@@ -246,7 +246,7 @@ module.exports = {
                                         id: server.id,
                                         _rev: server.ref,
                                         createdBy: server.createdBy,
-                                        createdTime: server.createdAt,
+                                        createdAt: server.createdTime,
                                         name: server.name,
                                         lastConnection: server.updatedAt
                                     },
