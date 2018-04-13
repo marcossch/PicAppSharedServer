@@ -1,6 +1,5 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL",
     "username": "postgres",
     "password": null,
     "database": "postman_dev",
@@ -16,13 +15,5 @@
       "user": "iziaozkezmazle",
       "password": "d0222eb652d5988f157acccb1e2556a3e045e9e7d51a0cf8b53eddbb68dc5d11"
     }
-  },
-  "test": {
-    "username": "postgres",
-    "password": null,
-    "database": "postman_dev",
-    "host": "localhost",
-    "port": 5432,
-    "dialect": "postgres"
   }
 }
