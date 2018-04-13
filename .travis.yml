@@ -18,3 +18,7 @@ script:
 
 after_success:
   - npm run uTest
+
+env:
+  global:
+    - NODE_ENV=test
