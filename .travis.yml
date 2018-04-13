@@ -3,33 +3,18 @@ language: node_js
 node_js:
  - "9.9.0"
 
-#env:
-#  global:
-#    - CODECOV_TOKEN=:"bffb0e55-cb81-490c-a8db-0c7308611d1f"
-
 install:
-  - npm install --save-dev codecov
   - npm install --save-dev mocha
+  - npm install --save-dev chai
+  - npm install --save-dev chai-http
+
+  #de aca para abajo veo mañana con cover
+  - npm install --save-dev codecov
   - npm install --save-dev istanbul
-  - npm install --save-dev nyc
-  - npm install --save-dev coveralls mocha-lcov-reporter
 
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
   - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
-  - npm run coverage
-
-#script:
-#  - bash <(curl -s https://codecov.io/bash) -t bffb0e55-cb81-490c-a8db-0c7308611d1f
-#- bash <(curl -s https://codecov.io/bash) -cF node_js
-
-
-#after_script:
-#- npm run covecov
-
-#services:
-#  - postgresql
-
-# en json "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+  - npm run uTest
