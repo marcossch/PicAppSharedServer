@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test';
 
-var request = require('request');
+const request = require('superagent');
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../app');
@@ -11,19 +11,13 @@ chai.use(chaiHttp);
 
 describe('Test para User', function() {
 
-    beforeEach(function () {
-        /*Creacion de entorno para pruebas*/
+    beforeEach(function (done) {
 
-        /*request.post({
-            headers: {'content-type': 'application/x-www-form-urlencoded'},
-            url: 'https://localhost/api/user/super',
-            form: {username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'}
-        });*/
-    })
+    });
 
-    /*describe('Testeo Crear Usuario: Post /api/user', function () {
+    describe('Testeo Crear Usuario: Post /api/user', function () {
 
-        it('Check Status 401: unauthorized', function (done) {
+        /*it('Check Status 401: unauthorized', function (done) {
             chai.request(server)
                 .post('/api/user/?ApplicationToken=tok')
                 .set('content-type', 'application/x-www-form-urlencoded')
@@ -34,6 +28,7 @@ describe('Test para User', function() {
                 });
             });
         });*/
+    });
 });
 
     /*it('Test Integracion: Check status 200 and Type Data', function(done) {
@@ -154,32 +149,70 @@ describe('Test para User', function() {
 
 
 
-/* por las du:
-"creacion": "superu && supert && supers",
-    "superu":"curl --data 'username=superuser&password=steelsoft&id=0&_rev=asd&applicationOwner=grupo3' 127.0.0.1:3000/api/user/super/?key=steelsoft",
-    "supert":"curl --data 'username=superuser' 127.0.0.1:3000/api/token",
-    "supers":"curl --data 'name=superserver&id=0&_rev=asd&createdBy=superuser&createdTime=0&lastConnection=0' 127.0.0.1:3000/api/servers/?BusinessToken=331864634"
+/* COSAS PROBADAS PARA BEFORE:
+
+chai
+
+       chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
+            .end(function (err,res) {
+                if(res.should.have.status(200)){console.log("SUPERUSER perfecto")};
+            });
+        chai.request(server)
+            .post('/api/token')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({username: 'superuser'})
+            .end(function (err,res) {
+                if(res.should.have.status(200)){console.log("SUPERUSER perfecto")};
+            });
+        chai.request(server)
+            .post('/api/servers/?BusinessToken=331864634')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0})
+            .end(function (err,res) {
+                if(res.should.have.status(200)){console.log("SUPERSERVER perfecto")};
+                done();
+            });
+
+
+https
+
+        var options = {
+            hostname: 'localhost',
+            port: 5432,
+            path: '/api/user/super',
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body:{
+                username: 'superuser',
+                password: 'steelsoft',
+                id: 0,
+                _rev: 'asd',
+                applicationOwner: 'grupo3'
+            }
+        };
+
+        var req = https.request(options, (res) => {
+            console.log('statusCode:', res.statusCode);
+            console.log('headers:', res.headers);
+
+            res.on('data', (d) => {
+                process.stdout.write(d);
+              });
+            });
+
+
+superagent
+
+        request
+            .post('127.0.0.1:3000/api/user/super')
+            .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
+            .set('X-API-Key', 'foobar')
+            .set('accept', 'json')
+            .end((err, res) => {
+                console.log(res);
+                done();
+            });
  */
-
-/*  beforeEach(function () {
-        /*Creacion de entorno para pruebas*
-        request.post({
-            headers: {'content-type': 'application/x-www-form-urlencoded'},
-            url: 'http://127.0.0.1:3000/api/user/super',
-            form: {username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'}
-        });
-//request.post('http://127.0.0.1:3000/api/token',{form:{username: 'superuser'}});
-//request.post('http://127.0.0.1:3000/api/servers/?BusinessToken=331864634',{form:{name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0}});
-/*Listo del entorno para pruebas*
-});
-
-/*afterEach(function () {
-    /*Destruccion de entorno para pruebas*
-    chai.request(server).delete('api/servers/?BusinessToken=331864634')
-        .set('content-type', 'application/x-www-form-urlencoded')
-        .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
-    chai.request(server).delete('/api/user')
-        .set('content-type', 'application/x-www-form-urlencoded')
-        .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'});
-    /*Listo del entorno para pruebas*
-});*/

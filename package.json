@@ -36,6 +36,7 @@
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.1.0",
     "nodemon": "^1.17.3",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "superagent": "^3.8.2"
   }
 }
