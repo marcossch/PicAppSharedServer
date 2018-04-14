@@ -6,10 +6,10 @@ var should = chai.should();
 
 chai.use(chaiHttp);
 
-/*
+
 describe("Creacion y Destruccion",function() {
     before(function () {
-        /*Creacion de entorno para pruebas*
+        /*Creacion de entorno para pruebas*/
         chai.request(server).post('/api/user/super/?key=steelsoft')
             .set('content-type', 'application/x-www-form-urlencoded')
             .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'});
@@ -19,9 +19,10 @@ describe("Creacion y Destruccion",function() {
         chai.request(server).post('api/servers/?BusinessToken=331864634')
             .set('content-type', 'application/x-www-form-urlencoded')
             .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
-        /*Listo del entorno para pruebas*
+        /*Listo del entorno para pruebas*/
     });
-
+});
+/*
     after(function () {
         /*Destruccion de entorno para pruebas*
         chai.request(server).delete('api/servers/?BusinessToken=331864634')
@@ -36,9 +37,24 @@ describe("Creacion y Destruccion",function() {
 
 describe('Test para User', function() {
 
+
     describe('Testeo Crear Usuario: Post /api/user',function(){
 
-        /*it('Check Status 401: unauthorized', function(done) {
+        before(function () {
+            /*Creacion de entorno para pruebas*/
+            chai.request(server).post('/api/user/super/?key=steelsoft')
+                .set('content-type', 'application/x-www-form-urlencoded')
+                .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'});
+            chai.request(server).post('api/token')
+                .set('content-type', 'application/x-www-form-urlencoded')
+                .send({username: 'superuser'});
+            chai.request(server).post('api/servers/?BusinessToken=331864634')
+                .set('content-type', 'application/x-www-form-urlencoded')
+                .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
+            /*Listo del entorno para pruebas*/
+        });
+
+        it('Check Status 401: unauthorized', function(done) {
             chai.request(server)
                 .post('/api/user/?ApplicationToken=tok')
                 .set('content-type', 'application/x-www-form-urlencoded')
@@ -47,7 +63,7 @@ describe('Test para User', function() {
                     res.should.have.status(401);
                     done();
                 });
-            });*/
+            });
 
         /*it('Test Integracion: Check status 200 and Type Data', function(done) {
             chai.request(server)
