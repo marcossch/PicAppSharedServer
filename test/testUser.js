@@ -6,9 +6,10 @@ var should = chai.should();
 
 chai.use(chaiHttp);
 
+/*
 describe("Creacion y Destruccion",function() {
     before(function () {
-        /*Creacion de entorno para pruebas*/
+        /*Creacion de entorno para pruebas*
         chai.request(server).post('/api/user/super/?key=steelsoft')
             .set('content-type', 'application/x-www-form-urlencoded')
             .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'});
@@ -18,20 +19,20 @@ describe("Creacion y Destruccion",function() {
         chai.request(server).post('api/servers/?BusinessToken=331864634')
             .set('content-type', 'application/x-www-form-urlencoded')
             .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
-        /*Listo del entorno para pruebas*/
+        /*Listo del entorno para pruebas*
     });
 
     after(function () {
-        /*Destruccion de entorno para pruebas*/
+        /*Destruccion de entorno para pruebas*
         chai.request(server).delete('api/servers/?BusinessToken=331864634')
             .set('content-type', 'application/x-www-form-urlencoded')
             .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
         chai.request(server).delete('/api/user')
             .set('content-type', 'application/x-www-form-urlencoded')
             .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'});
-        /*Listo del entorno para pruebas*/
+        /*Listo del entorno para pruebas*
     });
-});
+});*/
 
 describe('Test para User', function() {
 
@@ -166,3 +167,12 @@ describe('Test para User', function() {
 */
 
 });
+
+
+/* por las du:
+"creacion": "superu && supert && supers",
+    "superu":"curl --data 'username=superuser&password=steelsoft&id=0&_rev=asd&applicationOwner=grupo3' 127.0.0.1:3000/api/user/super/?key=steelsoft",
+    "supert":"curl --data 'username=superuser' 127.0.0.1:3000/api/token",
+    "supers":"curl --data 'name=superserver&id=0&_rev=asd&createdBy=superuser&createdTime=0&lastConnection=0' 127.0.0.1:3000/api/servers/?BusinessToken=331864634"
+
+ */
