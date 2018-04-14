@@ -53,6 +53,7 @@ describe('Test para User', function() {
                 .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
             /*Listo del entorno para pruebas*/
         });
+        /*
 
         it('Check Status 401: unauthorized', function(done) {
             chai.request(server)
@@ -63,7 +64,7 @@ describe('Test para User', function() {
                     res.should.have.status(401);
                     done();
                 });
-            });
+            });*/
 
         /*it('Test Integracion: Check status 200 and Type Data', function(done) {
             chai.request(server)
