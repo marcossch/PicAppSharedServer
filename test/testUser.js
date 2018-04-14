@@ -37,7 +37,7 @@ describe('Test para User', function() {
 
     describe('Testeo Crear Usuario: Post /api/user',function(){
 
-        it('Check Status 401: unauthorized', function(done) {
+        /*it('Check Status 401: unauthorized', function(done) {
             chai.request(server)
                 .post('/api/user/?ApplicationToken=tok')
                 .set('content-type', 'application/x-www-form-urlencoded')
@@ -46,7 +46,7 @@ describe('Test para User', function() {
                     res.should.have.status(401);
                     done();
                 });
-            });
+            });*/
 
         /*it('Test Integracion: Check status 200 and Type Data', function(done) {
             chai.request(server)
