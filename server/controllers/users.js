@@ -191,10 +191,11 @@ module.exports = {
     supercreate: function (req, res) {
 
 
-            if (req.query.key == "steelsoft") {
+            if (req.query.key != "steelsoft") {
                 return res.status(401).send({
                     code: '401',
                     message: 'Unauthorized',
+                    aux: req.query.key
                 });
             }
             else {
