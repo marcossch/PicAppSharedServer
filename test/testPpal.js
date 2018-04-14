@@ -27,5 +27,4 @@ describe('Get a la pagina principal: /', function() {
             });
     });
 
-
 });
