@@ -44,7 +44,10 @@ describe('Test para User', function() {
             /*Creacion de entorno para pruebas*/
             chai.request(server).post('/api/user/super/?key=steelsoft')
                 .set('content-type', 'application/x-www-form-urlencoded')
-                .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'});
+                .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
+                .end(function(err,res){
+                    res.should.have.status(200);
+                });
             chai.request(server).post('api/token')
                 .set('content-type', 'application/x-www-form-urlencoded')
                 .send({username: 'superuser'});
@@ -53,7 +56,7 @@ describe('Test para User', function() {
                 .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0});
             /*Listo del entorno para pruebas*/
         });
-        /*
+
 
         it('Check Status 401: unauthorized', function(done) {
             chai.request(server)
@@ -64,7 +67,7 @@ describe('Test para User', function() {
                     res.should.have.status(401);
                     done();
                 });
-            });*/
+            });
 
         /*it('Test Integracion: Check status 200 and Type Data', function(done) {
             chai.request(server)
