@@ -8,7 +8,8 @@
     "cover": "istanbul cover _mocha",
     "test": "node_modules/mocha/bin/mocha ./test",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
-    "uTest": "sequelize db:migrate && npm run test && sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo",
+    "uTest": "sequelize db:migrate && npm run test",
+    "desmi": "sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo",
     "ltest": "export NODE_ENV=test && npm run uTest"
   },
   "repository": {

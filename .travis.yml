@@ -18,6 +18,7 @@ script:
 
 after_success:
   - npm run uTest
+  - npm run desmi
 
 env:
   global:
