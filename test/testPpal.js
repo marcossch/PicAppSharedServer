@@ -27,6 +27,16 @@ describe('Pagina Principal', function() {
                 done();
             });
         });
+
+    it('Post Superuser', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
+            .end((err, res) => {
+                console.log(res);
+                res.should.have.status(200);
+                done();
+            });
 });
 
 
