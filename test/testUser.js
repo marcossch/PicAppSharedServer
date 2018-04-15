@@ -1,59 +1,29 @@
 process.env.NODE_ENV = 'test';
+'use strict'
 
-var nock = require('nock');
-var request = require('supertest')("http://127.0.0.1:3000");
-var expect = require('chai').expect;
+var assert = require('assert');
+var sinon = require('sinon');
+var PassThrough = require('stream').PassThrough;
+var http = require('http');
+var chai = require('chai');
 
-describe("Testing User", function () {
+var app = require('../app.js');
 
-    it("Get all users",function (done) {
-        nock("http://127.0.0.1:3000").get('/api/users').reply(200,{"status": 200, "message":"ok"});
+describe('app', function() {
 
-        request.get('/api/users').end(function(err,res){
-            expect(res.body.status).to.equal(200);
-            done();
+    let server = app.listen(3000);
+    
+    describe('Get', () => {
+        it('it should not get a token, it should get an error', (done) => {
+            
+            chai.request(app)
+                .get('/api/users')
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    done();
+                });
         });
     });
+    
+    server.close()
 });
-
-
-/*
-//let User = require('../server/controllers/users');
-//Require the dev-dependencies
-let chai = require('chai');
-let server = require('../app');
-
-
-describe("Testing User", function () {
-
-
-    it('Post Superuser', (done) => {
-        chai.request(server)
-            .post('/api/user/super')
-            .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
-            .end((err, res) => {
-
-                res.should.have.status(200);
-                done();
-            });
-    });
-
-
-    it('Get by Username: Superuser', (done) => {
-        chai.request(server)
-            .get('/api/users/superuser')
-            .end((err, res) => {
-                res.should.have.status(200);
-                done();
-            });
-        });
-
-    it('Delete Superuser',(done)=> {
-        chai.request(server)
-            .delete('/api/users/superuser')
-            .end((err, res) => {
-                res.should.have.status(204);
-                done();
-            });
-        });
-});*/
