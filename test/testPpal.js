@@ -26,6 +26,15 @@ describe('Pagina Principal', function() {
                 done();
             });
         });
+    it('it should not get a token, it should get an error', (done) => {
+
+        chai.request(server)
+            .get('/api/users')
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    })
 });
 
 
