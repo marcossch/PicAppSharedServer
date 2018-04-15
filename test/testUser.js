@@ -12,7 +12,7 @@ var app = require('../app.js');
 describe('app', function() {
 
     let server = app.listen(3000);
-    
+    /*
     describe('Get', () => {
         it('it should not get a token, it should get an error', (done) => {
             
@@ -23,7 +23,7 @@ describe('app', function() {
                     done();
                 });
         });
-    });
+    });*/
     
     server.close()
 });
