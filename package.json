@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "cover": "istanbul cover _mocha",
-    "test": "node_modules/mocha/bin/mocha ./test",
+    "test": "node_modules/mocha/bin/mocha ./test --exit",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
     "desmi": "sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo",
@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
@@ -35,8 +36,11 @@
     "codecov": "^3.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.1.0",
+    "nock": "^9.0.13",
     "nodemon": "^1.17.3",
+    "proxyquire": "^2.0.1",
     "request": "^2.85.0",
-    "superagent": "^3.8.2"
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0"
   }
 }

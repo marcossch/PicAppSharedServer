@@ -7,3 +7,8 @@ app.set('port', port);
 
 const server = http.createServer(app);
 server.listen(port);
+
+function stop(){
+    server.close();
+}
+module.exports.stop = stop;
