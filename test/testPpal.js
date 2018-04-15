@@ -37,6 +37,7 @@ describe('Pagina Principal', function() {
                 res.should.have.status(200);
                 done();
             });
-});
+        });
+    });
 
 
