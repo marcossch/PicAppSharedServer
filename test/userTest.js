@@ -7,16 +7,16 @@ var server = require('../app');
 var should = chai.should();
 chai.use(chaiHttp);
 
-var app = require('../app.js');
+var app = require('../app');
 
 describe('Testing USERS', function() {
 
-    /*it('Get all users', (done) => {
+    it('Get all users', (done) => {
         chai.request(server)
-            .get('/api/users')
+            .get('/api/users/')
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
-        });*/
+        });
 });
