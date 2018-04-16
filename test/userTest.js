@@ -14,15 +14,34 @@ describe('Testing USERS', function() {
     it('Post SuperUser', function(){
         chai.request(server)
             .post('/api/user/super')
-            .send({username: 'superuser', password: 'steelsoft', id: 140, _rev: 'asd', applicationOwner: 'grupo3'})
+            .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
             .end((err, res) => {
-
                 res.should.have.status(200);
                 done();
             });
         });
 
-/**    it('Get all users', (done) => {
+    it('Token SuperUser', function(){
+        chai.request(server)
+            .post('/api/token')
+            .send({username: 'superuser', password: 'steelsoft'})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    /*it('Get by Username: Superuser', (done) => {
+        chai.request(server)
+            .get('/api/users/superuser')
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+        });*/
+
+
+    /**    it('Get all users', (done) => {
         chai.request(server)
             .get('/api/users/')
             .end((err, res) => {
