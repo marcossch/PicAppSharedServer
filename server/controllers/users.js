@@ -202,7 +202,7 @@ module.exports = {
 
                 //si el ApiKey se valido entonces se crea el usuario
 
-                User.create({
+                return User.create({
                     name: req.body.username,
                     password: req.body.password,
                     id: req.body.id,
