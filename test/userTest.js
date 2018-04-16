@@ -27,6 +27,7 @@ describe('Testing USERS', function() {
         chai.request(server)
             .post('/api/token')
             .send({username: 'superuser', password: 'steelsoft'})
+            .set('content-type', 'application/x-www-form-urlencoded')
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -43,7 +44,7 @@ describe('Testing USERS', function() {
                 res.should.have.status(200);
                 done();
             });
-    });
+        });
 
 
 /*    it('Get by Username: Superuser', (done) => {
