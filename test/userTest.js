@@ -11,11 +11,13 @@ var app = require('../app');
 
 describe('Testing USERS', function() {
 
+
     it('Post SuperUser', function(){
         chai.request(server)
             .post('/api/user/super')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
-            .end((err, res) => {
+            .end(function (err,res) {
                 res.should.have.status(200);
                 done();
             });
@@ -28,12 +30,25 @@ describe('Testing USERS', function() {
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
+                //Token user:331864634
+            });
+          });
+
+    it('Post Server', function(){
+        chai.request(server)
+            .post('/api/servers/?BusinessToken=331864634')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({name: 'superserver', id: 0, _rev: 'asd', createdBy: 'superuser', createdTime: 0, lastConnection: 0})
+            .end(function (err,res) {
+                res.should.have.status(200);
+                done();
             });
     });
 
-    /*it('Get by Username: Superuser', (done) => {
+
+/*    it('Get by Username: Superuser', (done) => {
         chai.request(server)
-            .get('/api/users/superuser')
+            .get('/api/users/:superuser')
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -41,7 +56,7 @@ describe('Testing USERS', function() {
         });*/
 
 
-    /**    it('Get all users', (done) => {
+    /*   it('Get all users', (done) => {
         chai.request(server)
             .get('/api/users/')
             .end((err, res) => {
