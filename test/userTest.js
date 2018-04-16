@@ -15,7 +15,7 @@ const responseGet = require('./getresponse');
 
 describe('Get User tests', () => {
 
-    it('Post SuperUser', function(){
+    /*it('Post SuperUser', function(){
         chai.request(server)
             .post('/api/user/super')
             .send({username: 'superuser', password: 'steelsoft', id: 0, _rev: 'asd', applicationOwner: 'grupo3'})
@@ -23,7 +23,7 @@ describe('Get User tests', () => {
                 res.should.have.status(200);
                 done();
             });
-    });
+    });*/
     it('Get a user by username', () => {
         nock('https://127.0.0.1:3000')
             .get('/api/users/facu')
