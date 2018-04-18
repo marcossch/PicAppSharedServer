@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Killing docker containers"
+sudo docker stop $(sudo docker ps -a -q)
+echo "Deleting containers"
+sudo docker rm $(sudo docker ps -a -q)
+

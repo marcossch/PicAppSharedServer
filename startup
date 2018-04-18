@@ -1,0 +1,15 @@
+#!/bin/bash
+NODE_ENV=development
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd $DIR
+
+echo "Building Docker image..."
+sudo docker build -t picapp/postman .
+echo "Launching Docker container..."
+sudo docker-compose up
+
+echo "Running database..."
+sudo docker exec -it $(docker ps | grep sharedserverpicapp_db | awk '{ print $1 }') /bin/sh -c 'dropdb -U postgres postman_dev'
+sudo docker exec -it $(docker ps | grep sharedserverpicapp_db | awk '{ print $1 }') /bin/sh -c 'createdb -U postgres postman_dev'
+sudo docker exec -it $(docker ps | grep sharedserverpicapp_web | awk '{ print $1 }') /bin/sh -c 'npm run db:migrate'
