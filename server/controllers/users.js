@@ -173,7 +173,7 @@ module.exports = {
                         version: "1.0"
                     },
                     token: {
-                        expiresAt: 1000,
+                        expiresAt: Date.now() + + 2*24*60*60*1000,
                         token: user.token
                     }
                 }))
@@ -237,10 +237,17 @@ module.exports = {
 
 //Funcion de hash simple para los tokens
 function hash(str){
+
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 5; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
     var hash = 0;
-    if (str.length == 0) return hash;
-    for (i = 0; i < str.length; i++) {
-        char = str.charCodeAt(i);		hash = ((hash<<5)-hash)+char;		hash = hash & hash; // Convert to 32bit integer
+    if (text.length == 0) return hash;
+    for (i = 0; i < text.length; i++) {
+        char = text.charCodeAt(i);		hash = ((hash<<5)-hash)+char;		hash = hash & hash; // Convert to 32bit integer
     }
     if (hash < 0) {
         hash = hash * -1;
