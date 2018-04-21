@@ -36,8 +36,9 @@
     "chai-http": "^4.0.0",
     "codecov": "^3.0.0",
     "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^5.1.0",
+    "mocha": "^5.1.1",
     "nock": "^9.0.13",
+    "node-mocks-http": "^1.5.8",
     "nodemon": "^1.17.3"
   }
 }
