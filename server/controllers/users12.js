@@ -67,17 +67,10 @@ module.exports = {
             .findByPrimary(req.params.username)
             .then(user => {
                 if (!user) {
-                    return res.status(404).send({
+                     res.status(404).send({
                         code: '404',
                         message: 'User Not Found',
                     });
-                    /*
-                    res.status(404).send({
-                        code: '404',
-                        message: 'User Not Found',
-                      });
-                    return 404;
-                    */
                 }
                 return res.status(200).json({
                     metadata: {
@@ -192,6 +185,22 @@ module.exports = {
                             message:"Incumplimiento de precondiciones " +
                             "(parámetros faltantes) o validación fallida", error})});
     },
+    /* METODOS PRIVADOS PARA LA DEVOLUCION DE LAS COSAS */
+
+    retAux: function(req) {
+        return User.findByPrimary(req.params.username)
+            .then(user => {
+                if (!user) {
+                    return {code: '404'};
+                }
+                return {code: '200'};
+            })
+            .catch(error => {
+                code: '400',
+                error
+              });
+              return {code: '400'};
+    },
 
     /* PRIVADO PARA PRUEBAS  */
 
@@ -240,6 +249,7 @@ module.exports = {
     //},
 
 };
+
 
 //Funcion de hash simple para los tokens
 function hash(str){
