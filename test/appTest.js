@@ -28,7 +28,7 @@ describe('Pagina Principal', function() {
             });
         });
 
-      it('Check Status 200', function (done) {
+      /*it('Check Status 200', function (done) {
           chai.request(server)
               .get('/api/users')
               .end(function (err, res) {
@@ -52,5 +52,5 @@ describe('Pagina Principal', function() {
                 done();
                 });
             });
-
+            */
 });
