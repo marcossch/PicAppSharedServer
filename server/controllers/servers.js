@@ -149,6 +149,7 @@ module.exports = {
                             .update({
                                 name: req.body.name || server.name,
                                 ref: req.body._rev || server.ref,
+                                createdBy: req.body.createdBy || server.createdBy,
                             })
                             .then(() => res.status(200).json({
                                 metadata: {

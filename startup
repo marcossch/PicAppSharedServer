@@ -4,8 +4,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd $DIR
 
-echo "Building Docker image..."
-sudo docker build -t picapp/postman .
 echo "Launching Docker container..."
 sudo docker-compose up -d
 
