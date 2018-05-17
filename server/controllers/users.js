@@ -193,51 +193,45 @@ module.exports = {
                             "(parámetros faltantes) o validación fallida", error})});
     },
 
-    /* PRIVADO PARA PRUEBAS  */
+    /*PRIVADO PARA PRUEBAS*/
 
     supercreate: function (req, res) {
 
-
-            /*if (req.query.key != "steelsoft") {
-                return res.status(401).send({
-                    code: '401',
-                    message: 'Unauthorized',
-                    aux: req.query.key
-                });
-            }
-            else {*/
-
-                //si el ApiKey se valido entonces se crea el usuario
-
-                return User.create({
-                    name: req.body.username,
-                    password: req.body.password,
-                    id: req.body.id,
-                    ref: req.body._rev,
-                    applicationOwner: req.body.applicationOwner,
+        return User.create({
+            name: req.body.username,
+            password: req.body.password,
+            id: req.body.id,
+            ref: req.body._rev,
+            applicationOwner: req.body.applicationOwner,
+        })
+            .then(user => res.status(200).json({
+                metadata: {
+                    version: "1.0"
+                },
+                user: {
+                    id: user.id,
+                    _rev: user.ref,
+                    applicationOwner: user.applicationOwner,
+                    username: user.name
+                }
+            }))
+            .catch(error => {
+                res.status(400).send({
+                    code: '400',
+                    message: "Incumplimiento de precondiciones " +
+                    "(parámetros faltantes) o validación fallida", error
                 })
-                    .then(user => res.status(200).json({
-                        metadata: {
-                            version: "1.0"
-                        },
-                        user: {
-                            id: user.id,
-                            _rev: user.ref,
-                            applicationOwner: user.applicationOwner,
-                            username: user.name
-                        }
-                    }))
-                    .catch(error => {
-                        res.status(400).send({
-                            code: '400',
-                            message: "Incumplimiento de precondiciones " +
-                            "(parámetros faltantes) o validación fallida", error
-                        })
-                    });
+            });
+    },
 
+    listAux: function(req) { //devuelve todos los usuarios
+        let users = User.findAll();
+            if(users){
+              return {code: 200,
+                      res: users};
             }
-
-    //},
+            return {code:500};
+    }
 
 };
 
