@@ -6,7 +6,6 @@ var chaiHttp = require('chai-http');
 var server = require('../app');
 var user = require('../server/controllers/users');
 var should = chai.should();
-var request = require('supertest');
 
 chai.use(chaiHttp);
 
@@ -30,8 +29,8 @@ describe('Pagina Principal', function() {
             });
         });
 
-    // it('Check Status 200', function (done) {
-    //     request(user)
+    // it('Check Status 200', async() => {
+    //     chai.request(user)
     //     .post('/api/user/super')
     //     .set('content-type', 'application/json')
     //     .send({"username": "superuser",
