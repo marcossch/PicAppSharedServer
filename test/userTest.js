@@ -1,6 +1,10 @@
 'use strict';
 var user = require('../server/controllers/users.js');
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
 
 describe('Test Module: User', () => {
 
@@ -15,12 +19,7 @@ describe('Test Module: User', () => {
     let result = user.listAux();
     expect(result.code).to.equal(200);
     //assertions
-    result.res.then(function(data) {
-      expect(data.length).to.equal(0);
-      done();
-    }, function(error) {
-      assert.fail(error);
-      done();
-    });
+    expect(result.res).to.eventually.equal([]);
+    done();
   });
 });
