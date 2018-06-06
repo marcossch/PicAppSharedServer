@@ -10,11 +10,21 @@ var request = require('supertest');
 chai.use(chaiHttp);
 
 
-describe('Pagina Principal', function() {
+describe('Get a la Pagina Principal', function() {
     it('Check Status 200', function (done) {
       request(server).get('/')
         .expect(200)
         .expect(/Welcome to PicApp web services./, done)
+    });
+
+    it('Check Status 200', function (done) {
+      request(server).post('/api/user/super')
+      .send({"username": "superuser",
+             "password": "steelsoft",
+             "id": "0",
+             "_rev": "asd",
+             "applicationOwner": "grupo3"})
+        .expect(200,done)
     });
 
     // it('Check Status 200', function (done) {
