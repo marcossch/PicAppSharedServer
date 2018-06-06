@@ -13,13 +13,13 @@ describe('Test Module: User', () => {
     expect(response.code).to.be.equal(200);
   });
 
-  it('Cantidad de usuarios es 0, Status=200', async() => {
-    //call the function we're testing
-    const result = await user.listAux();
-    expect(result.code).to.equal(200);
-    const prom = await result.res;
-    expect(prom.length).to.equal(0);
-  });
+  // it('Cantidad de usuarios es 0, Status=200', async() => {
+  //   //call the function we're testing
+  //   const result = await user.listAux();
+  //   expect(result.code).to.equal(200);
+  //   const prom = await result.res;
+  //   expect(prom.length).to.equal(0);
+  // });
 
   // it('Pido los usuarios luego de agregar uno, Status=200', async() => {
   //   const req = {body:{"username": "superuser",
