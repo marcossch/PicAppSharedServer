@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "cover": "istanbul cover _mocha",
-    "test": "node_modules/mocha/bin/mocha ./test --exit",
+    "test": "mocha --exit",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
     "desmi": "sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo",
@@ -36,7 +36,7 @@
     "chai-http": "^4.0.0",
     "codecov": "^3.0.0",
     "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^5.1.1",
+    "mocha": "^5.2.0",
     "nock": "^9.0.13",
     "node-mocks-http": "^1.5.8",
     "nodemon": "^1.17.3"
