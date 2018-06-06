@@ -7,10 +7,16 @@ chai.use(chaiAsPromised);
 
 
 describe('Test Module: User', () => {
-
   it('Obtengo todos los usuarios, Status=200', () => {
     let response = user.listAux();
     expect(response.code).to.be.equal(200);
+  });
+
+  it('Cantidad de usuarios es 0, Status=200', function(done) {
+    let result = user.listAux();
+    expect(result.code).to.equal(200);
+    expect(result.res).to.eventually.equal([]);
+    done();
   });
 
   // it('Cantidad de usuarios es 0, Status=200', async() => {
@@ -19,6 +25,7 @@ describe('Test Module: User', () => {
   //   expect(result.code).to.equal(200);
   //   const prom = await result.res;
   //   expect(prom.length).to.equal(0);
+  //   done()
   // });
 
   // it('Pido los usuarios luego de agregar uno, Status=200', async() => {
