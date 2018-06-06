@@ -39,6 +39,7 @@
     "mocha": "^5.2.0",
     "nock": "^9.0.13",
     "node-mocks-http": "^1.5.8",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.3",
+    "supertest": "^3.1.0"
   }
 }
