@@ -36,7 +36,7 @@ describe('-----------------Modulo USERS-----------------', () => {
         chai.request(server)
             .get('/api/users/')
             .end((err, res) => {
-                res.body.should.be.a('array');
+                res.body.have.status(200);
                 done();
             });
         });

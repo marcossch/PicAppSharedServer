@@ -7,7 +7,7 @@ chai.use(chaiAsPromised);
 
 
 describe('Test Module: User', () => {
-  it('Obtengo todos los usuarios, Status=200', (done) => {
+  /*it('Obtengo todos los usuarios, Status=200', (done) => {
     let response = user.listAux();
     expect(response.code).to.be.equal(200);
     response.res.then(
@@ -27,7 +27,7 @@ describe('Test Module: User', () => {
     expect(result.code).to.equal(200);
     expect(result.res).to.eventually.equal([]);
     done();
-  });
+  });*/
 
   // it('Cantidad de usuarios es 0, Status=200', async() => {
   //   //call the function we're testing
