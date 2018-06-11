@@ -10,20 +10,20 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('-----------------Pagina Principal-----------------', function() {
-    it('Check Status 200', function (done) {
+describe('-----------------Pagina Principal-----------------', () => {
+    it('Get a la pagina principal tiene status code 200', (done) => {
         chai.request(server)
             .get('/')
-            .end(function (err, res) {
+            .end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
         });
 
-    it('Check Return Welcome to PicApp web services.', function (done) {
+    it('Get a la pagina principal devuelve: Welcome to PicApp web services.', (done) => {
         chai.request(server)
             .get('/')
-            .end(function (err, res) {
+            .end((err, res) => {
                 res.body.message.should.equal('Welcome to PicApp web services.');
                 done();
             });
@@ -31,16 +31,32 @@ describe('-----------------Pagina Principal-----------------', function() {
 })
 
 
-describe('-----------------Modulo USERS-----------------', function() {
-    it('Get all users returns should have status 200', function (done) {
+/*describe('-----------------Modulo USERS-----------------', () => {
+    it('Get de todos los usuarios tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/')
-            .end(function (err, res) {
+            .end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
         });
-});
+
+    it('Post mediante superuser tiene status 200', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "superuser",
+                  "password": "steelsoft",
+                  "id": "0",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+              });
+        });
+
+});*/
 
     // it('Check Status 200', async() => {
     //     chai.request(user)
