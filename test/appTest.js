@@ -28,18 +28,18 @@ describe('-----------------Pagina Principal-----------------', () => {
                 done();
             });
         });
-})
+});
 
 
 describe('-----------------Modulo USERS-----------------', () => {
-    it('Get de todos los usuarios tiene status 200', (done) => {
+    /*it('Get de todos los usuarios tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/')
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
-        });
+        });*/
 
     /*it('Post mediante superuser tiene status 200', (done) => {
         chai.request(server)
@@ -57,37 +57,3 @@ describe('-----------------Modulo USERS-----------------', () => {
         });*/
 
 });
-
-    // it('Check Status 200', async() => {
-    //     chai.request(user)
-    //     .post('/api/user/super')
-    //     .set('content-type', 'application/json')
-    //     .send({"username": "superuser",
-    //       "password": "steelsoft",
-    //       "id": "0",
-    //       "_rev": "asd",
-    //       "applicationOwner": "grupo3"})
-    //     .end(function (err, res) {
-    //         res.should.have.status(200);
-    //         done();
-    //         });
-    //     });
-
-
-
-
-        /*it('Check Status 200', function (done) {
-            chai.request(server)
-            .post('/api/user/super')
-            .set('content-type', 'application/json')
-            .send({"username": "superuser",
-              "password": "steelsoft",
-              "id": "0",
-              "_rev": "asd",
-              "applicationOwner": "grupo3"})
-            .end(function (err, res) {
-                res.should.have.status(200);
-                done();
-                });
-            });
-            */
