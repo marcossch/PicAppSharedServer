@@ -32,14 +32,14 @@ describe('-----------------Pagina Principal-----------------', () => {
 
 
 describe('-----------------Modulo USERS-----------------', () => {
-    /*it('Get de todos los usuarios tiene status 200', (done) => {
+    it('Get de todos los usuarios tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/')
             .end((err, res) => {
-                res.should.have.status(200);
+                res.body.should.be.a('array');
                 done();
             });
-        });*/
+        });
 
     /*it('Post mediante superuser tiene status 200', (done) => {
         chai.request(server)

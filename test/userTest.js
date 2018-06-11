@@ -7,12 +7,22 @@ chai.use(chaiAsPromised);
 
 
 describe('Test Module: User', () => {
-  it('Obtengo todos los usuarios, Status=200', () => {
+  it('Obtengo todos los usuarios, Status=200', (done) => {
     let response = user.listAux();
     expect(response.code).to.be.equal(200);
+    response.res.then(
+        function(result){
+            result.should.be.a('array');
+            done();
+        },
+        function(error){
+          console.log(error);
+          done(error);
+        }
+    );
   });
 
-  it('Cantidad de usuarios es 0, Status=200', function(done) {
+  it('Cantidad de usuarios es 0, Status=200', (done) => {
     let result = user.listAux();
     expect(result.code).to.equal(200);
     expect(result.res).to.eventually.equal([]);
