@@ -31,7 +31,7 @@ describe('-----------------Pagina Principal-----------------', () => {
 })
 
 
-/*describe('-----------------Modulo USERS-----------------', () => {
+describe('-----------------Modulo USERS-----------------', () => {
     it('Get de todos los usuarios tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/')
@@ -41,7 +41,7 @@ describe('-----------------Pagina Principal-----------------', () => {
             });
         });
 
-    it('Post mediante superuser tiene status 200', (done) => {
+    /*it('Post mediante superuser tiene status 200', (done) => {
         chai.request(server)
             .post('/api/user/super')
             .set('content-type', 'application/json')
@@ -54,9 +54,9 @@ describe('-----------------Pagina Principal-----------------', () => {
                 res.should.have.status(200);
                 done();
               });
-        });
+        });*/
 
-});*/
+});
 
     // it('Check Status 200', async() => {
     //     chai.request(user)
