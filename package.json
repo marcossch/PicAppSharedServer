@@ -2,11 +2,11 @@
   "name": "SharedServerPicApp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "cover": "istanbul cover _mocha",
-    "test": "mocha --exit",
+    "test": "mocha --timeout 10000 --exit",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
     "desmi": "sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo",

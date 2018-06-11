@@ -10,7 +10,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 
-describe('Pagina Principal', function() {
+describe('-----------------Pagina Principal-----------------', function() {
     it('Check Status 200', function (done) {
         chai.request(server)
             .get('/')
@@ -28,6 +28,19 @@ describe('Pagina Principal', function() {
                 done();
             });
         });
+})
+
+
+describe('-----------------Modulo USERS-----------------', function() {
+    it('Get all users returns should have status 200', function (done) {
+        chai.request(server)
+            .get('/api/users/')
+            .end(function (err, res) {
+                res.should.have.status(200);
+                done();
+            });
+        });
+});
 
     // it('Check Status 200', async() => {
     //     chai.request(user)
@@ -44,17 +57,10 @@ describe('Pagina Principal', function() {
     //         });
     //     });
 
-      /*it('Check Status 200', function (done) {
-          chai.request(server)
-              .get('/api/users')
-              .end(function (err, res) {
-                  res.should.have.status(200);
-                  done();
-              });
-          });
 
 
-        it('Check Status 200', function (done) {
+
+        /*it('Check Status 200', function (done) {
             chai.request(server)
             .post('/api/user/super')
             .set('content-type', 'application/json')
@@ -69,4 +75,3 @@ describe('Pagina Principal', function() {
                 });
             });
             */
-});
