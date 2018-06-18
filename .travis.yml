@@ -2,7 +2,7 @@ language: node_js
 
 services:
   - postgresql
-  
+
 node_js:
  - "9.9.0"
 
@@ -13,6 +13,12 @@ install:
 
   - npm install --save-dev codecov
   - npm install --save-dev istanbul
+
+before_script:
+- psql -c "CREATE USER root WITH LOGIN PASSWORD 'root';" -U postgres
+- psql -c 'create database "SharedServer";' -U postgres
+- psql -c 'GRANT CONNECT ON DATABASE "SharedServer" TO root;' -U postgres
+- psql -U root -l
 
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
