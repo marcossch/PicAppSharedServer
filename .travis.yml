@@ -28,7 +28,7 @@ script:
   - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
-  - npm run uTest
+  - npm run test
 
 env:
   global:
