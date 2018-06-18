@@ -20,7 +20,7 @@
   "test": {
     "username": "root",
     "password": "root",
-    "database": "webusersdb",
+    "database": "testing_db",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
