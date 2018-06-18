@@ -5,6 +5,7 @@ services:
 
 node_js:
  - "9.9.0"
+
 postgres:
   adapter: postgresql
   database: myapp_test
@@ -20,13 +21,9 @@ install:
 before_script:
   - psql -c "CREATE DATABASE testing_db;" -U postgres
   - psql -c "CREATE USER root WITH LOGIN PASSWORD 'root';" -U postgres
-
+  - "rake db:migrate"
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
-  - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
-
-after_success:
-  - npm run uTest
+  - npm run test
 
 env:
   global:
