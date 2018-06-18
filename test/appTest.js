@@ -41,6 +41,7 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
+/*
     it('Post mediante superuser tiene status 200', (done) => {
         chai.request(server)
             .post('/api/user/super')
@@ -56,6 +57,6 @@ describe('-----------------Modulo USERS-----------------', () => {
               });
         });
 
-        /* */
+        */
 
 });
