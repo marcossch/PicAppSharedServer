@@ -5,6 +5,9 @@ services:
 
 node_js:
  - "9.9.0"
+postgres:
+  adapter: postgresql
+  database: myapp_test
 
 install:
   - npm install --save-dev mocha
