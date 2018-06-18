@@ -24,7 +24,8 @@ before_script:
   - npm run db:migrate
 
 script:
-  - istanbul cover npm run test --exit -R spec
+  -  npm run test --exit
+  - istanbul cover mocha --exit -- -R spec
   - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 env:
