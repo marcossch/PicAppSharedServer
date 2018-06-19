@@ -41,7 +41,6 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
-
     it('Post mediante superuser tiene status 200', (done) => {
         chai.request(server)
             .post('/api/user/super')
@@ -57,11 +56,29 @@ describe('-----------------Modulo USERS-----------------', () => {
               });
         });
 
-    it('Get de todos los usuarios tiene status 200 y longitud 1', (done) => {
+    it('Get al usuario creado anteriormente tiene status 200 ', (done) => {
         chai.request(server)
             .get('/api/users/superuser')
             .end((err, res) => {
                 res.status.should.equal(200);
+                done();
+            });
+        });
+
+    it('Delete al usuario creado anteriormente tiene status 200 ', (done) => {
+        chai.request(server)
+            .delete('/api/users/superuser')
+            .end((err, res) => {
+                res.status.should.equal(200);
+                done();
+            });
+        });
+
+    it('Get al usuario borrado anteriormente tiene status 404 ', (done) => {
+        chai.request(server)
+            .get('/api/users/superuser')
+            .end((err, res) => {
+                res.status.should.equal(404);
                 done();
             });
         });
