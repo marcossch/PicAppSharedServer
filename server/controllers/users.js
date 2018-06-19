@@ -71,13 +71,6 @@ module.exports = {
                         code: '404',
                         message: 'User Not Found',
                     });
-                    /*
-                    res.status(404).send({
-                        code: '404',
-                        message: 'User Not Found',
-                      });
-                    return 404;
-                    */
                 }
                 return res.status(200).json({
                     metadata: {
