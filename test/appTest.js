@@ -65,11 +65,11 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
-    it('Delete al usuario creado anteriormente tiene status 200', (done) => {
+    it('Delete al usuario creado anteriormente tiene status 204', (done) => {
         chai.request(server)
             .delete('/api/users/superuser')
             .end((err, res) => {
-                res.status.should.equal(200);
+                res.status.should.equal(204);
                 done();
             });
         });
