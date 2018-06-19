@@ -20,7 +20,7 @@ describe('-----------------Pagina Principal-----------------', () => {
             });
         });
 
-    it('Get a la pagina principal devuelve: Welcome to PicApp web services.', (done) => {
+    it('Get a la pagina principal devuelve: Welcome to PicApp web services', (done) => {
         chai.request(server)
             .get('/')
             .end((err, res) => {
@@ -56,7 +56,7 @@ describe('-----------------Modulo USERS-----------------', () => {
               });
         });
 
-    it('Get al usuario creado anteriormente tiene status 200 ', (done) => {
+    it('Get al usuario creado anteriormente tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/superuser')
             .end((err, res) => {
@@ -65,7 +65,7 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
-    it('Delete al usuario creado anteriormente tiene status 200 ', (done) => {
+    it('Delete al usuario creado anteriormente tiene status 200', (done) => {
         chai.request(server)
             .delete('/api/users/superuser')
             .end((err, res) => {
@@ -74,7 +74,7 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
-    it('Get al usuario borrado anteriormente tiene status 404 ', (done) => {
+    it('Get al usuario borrado anteriormente tiene status 404', (done) => {
         chai.request(server)
             .get('/api/users/superuser')
             .end((err, res) => {
