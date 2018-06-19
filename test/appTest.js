@@ -83,4 +83,32 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
+    it('Post mediante superuser sin pass tiene status 400', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "sinPass",
+                  "id": "0",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+              });
+        });
+
+    it('Post mediante superuser sin id tiene status 400', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "sinPass",
+                  "password": "0",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+              });
+        });
+
 });
