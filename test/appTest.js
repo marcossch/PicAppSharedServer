@@ -32,6 +32,7 @@ describe('-----------------Pagina Principal-----------------', () => {
 
 
 describe('-----------------Modulo USERS-----------------', () => {
+
     it('Get de todos los usuarios tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/')
@@ -56,6 +57,28 @@ describe('-----------------Modulo USERS-----------------', () => {
               });
         });
 
+    it('Validar el token de un usuario inexistente tiene status 404', (done) => {
+        chai.request(server)
+            .post('/api/token')
+            .set('content-type', 'application/json')
+            .send({"username": "pepe"})
+            .end((err, res) => {
+                res.should.have.status(404);
+                done();
+              });
+        });
+
+    it('Validar el token de superuser tiene status 200', (done) => {
+        chai.request(server)
+            .post('/api/token')
+            .set('content-type', 'application/json')
+            .send({"username": "superuser"})
+            .end((err, res) => {
+                res.should.have.status(404);
+                done();
+              });
+        });
+        
     it('Get al usuario creado anteriormente tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/superuser')
