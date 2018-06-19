@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">10% </span>
+        <span class="strong">95.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/10</span>
+        <span class='fraction'>23/24</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>23/23</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -70,23 +70,61 @@
 25
 26
 27
-28</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -98,22 +136,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const usersController = require('../controllers').users;
+const serversController = require('../controllers').servers;
+const filesController = require('../controllers').files;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = (app) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  app.get('/api', (req, res) =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).send({</span></span>
+module.exports = (app) =&gt; {
+  app.get('/api', (req, res) =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).send({</span>
     message: 'Welcome to the PicApp API!',
   }));
 &nbsp;
   //api pedida
-<span class="cstat-no" title="statement not covered" >  app.post('/api/user', usersController.create);</span>
-<span class="cstat-no" title="statement not covered" >  app.post('/api/token', usersController.validate);</span>
+    //users
+    app.post('/api/user', usersController.create); /**/
+    app.post('/api/user/super', usersController.supercreate);/*metodo solo para pruebas*/
+    app.post('/api/token', usersController.validate);
+&nbsp;
+    //servers
+    app.post('/api/servers', serversController.create);
+    app.get('/api/servers/:serverId', serversController.retrieve);
+    app.put('/api/servers/:serverId', serversController.update);
+    app.delete('/api/servers/:serverId', serversController.destroy);
+    app.post('/api/servers/:serverId', serversController.tokenReset);
+    app.get('/api/servers', serversController.list);
+&nbsp;
 &nbsp;
   //requests de usuarios
-<span class="cstat-no" title="statement not covered" >  app.get('/api/users', usersController.list);</span>
-<span class="cstat-no" title="statement not covered" >  app.get('/api/users/:username', usersController.retrieve);</span>
-<span class="cstat-no" title="statement not covered" >  app.put('/api/users/:username', usersController.update);</span>
-<span class="cstat-no" title="statement not covered" >  app.delete('/api/users/:username', usersController.destroy);</span>
+  app.get('/api/users/', usersController.list); /**/
+  app.get('/api/users/:username', usersController.retrieve); /**/
+  app.put('/api/users/:username', usersController.update); /**/
+  app.delete('/api/users/:username', usersController.destroy);/**/
 &nbsp;
+  //requests de files
+  app.post('/api/files', filesController.create);
+  app.get('/api/files', filesController.list);
+  app.get('/api/files/:fileId', filesController.retrieve);
+  app.put('/api/files/:fileId', filesController.update);
+  app.delete('/api/files/:fileId', filesController.destroy);
+  //app.post('/api/files/upload', filesController.upload);
 &nbsp;
 &nbsp;
   //For any other request method on posts, we're going to return "Method Not Allowed"
@@ -122,7 +180,6 @@
   //         message: 'Method Not Allowed',
   //     }));
 &nbsp;
-&nbsp;
 };
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -130,7 +187,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 07 2018 15:57:25 GMT-0300 (-03)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 19 2018 17:28:54 GMT-0300 (-03)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
