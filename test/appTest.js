@@ -74,11 +74,11 @@ describe('-----------------Modulo USERS-----------------', () => {
             .set('content-type', 'application/json')
             .send({"username": "superuser"})
             .end((err, res) => {
-                res.should.have.status(404);
+                res.should.have.status(201);
                 done();
               });
         });
-        
+
     it('Get al usuario creado anteriormente tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/superuser')
