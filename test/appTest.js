@@ -8,7 +8,6 @@ var server = require('../app');
 var should = chai.should();
 
 chai.use(chaiHttp);
-var req;
 
 describe('-----------------Pagina Principal-----------------', () => {
     it('Get a la pagina principal tiene status code 200', (done) => {
@@ -177,19 +176,14 @@ describe('-----------------Modulo SERVER-----------------', () => {
       });
 
     it('Post a creacion del server con parametros incorrectos tiene status 400', (done) => {
-      req = {query:{
-                  BusinessToken:9081726354
-                },
-             body:{
-                  name:"superserver",
-                  id:0
-                }
-              }
       chai.request(server)
           .post('/api/servers')
           .set('content-type', 'application/json')
           .query({BusinessToken:"9081726354"})
-          .send(req)
+          .send({
+               "name":"superserver",
+               "id":0
+             })
           .end((err, res) => {
               res.should.have.status(400);
               done();
@@ -256,6 +250,72 @@ describe('-----------------Modulo SERVER-----------------', () => {
             });
       });
 
+    it('Post a validacion del server con token incorrecto tiene status 401', (done) => {
+      chai.request(server)
+          .post('/api/servers/12')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+    it('Post a validacion del server con id incorrecto tiene status 404', (done) => {
+      chai.request(server)
+          .post('/api/servers/12')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(404);
+              done();
+            });
+      });
+
+    it('Post a validacion del server con id incorrecto tiene status 201', (done) => {
+      chai.request(server)
+          .post('/api/servers/0')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(201);
+              done();
+            });
+      });
+
+    it('Delete del server con token incorrecto tiene status 401', (done) => {
+      chai.request(server)
+          .delete('/api/servers/0')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+    it('Delete del server con id incorrecto tiene status 404', (done) => {
+      chai.request(server)
+          .delete('/api/servers/12')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(404);
+              done();
+            });
+      });
+
+    it('Delete del server tiene status 200', (done) => {
+      chai.request(server)
+          .delete('/api/servers/0')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+
     /*ACA TERMINAMOS A PROBAR EL MODULO SERVER*/
   it('Delete al usuario creado anteriormente tiene status 204', (done) => {
       chai.request(server)
@@ -286,42 +346,135 @@ describe('-----------------Modulo FILES-----------------', () => {
             });
       });
 
-  it('Validar el token de superuser tiene status 200', (done) => {
-    chai.request(server)
-        .post('/api/supertoken')
-        .set('content-type', 'application/json')
-        .send({"username": "superuser"})
-        .end((err, res) => {
-            res.should.have.status(201);
-            done();
-          });
-    });
+    it('Post mediante supertoken de superuser tiene status 200', (done) => {
+      chai.request(server)
+          .post('/api/supertoken')
+          .set('content-type', 'application/json')
+          .send({"username": "superuser"})
+          .end((err, res) => {
+              res.should.have.status(201);
+              done();
+            });
+      });
     /*ACA EMPEZAMOS A PROBAR EL MODULO FILES*/
 
-    it('Creacion de un file con token incorrecto tiene status 401', (done) => {
-      req = {query:{BusinessToken:"123"}};
+    it('Post a creacion de un file con token incorrecto tiene status 401', (done) => {
       chai.request(server)
           .post('/api/files')
           .set('content-type', 'application/json')
-          .send(req)
+          .query({BusinessToken:"123"})
           .end((err, res) => {
               res.should.have.status(401);
               done();
             });
       });
 
-    /*it('Creacion de un file con parametros incorrectos tiene status 400', (done) => {
-      let req = {query:{BusinessToken:"9081726354"}};
+
+    it('Post a creacion de un file con parametros incorrectos tiene status 400', (done) => {
       chai.request(server)
           .post('/api/files')
           .set('content-type', 'application/json')
-          .send(req)
+          .query({BusinessToken:"9081726354"})
+          .send({"name":"superfile"})
           .end((err, res) => {
               res.should.have.status(400);
               done();
             });
-      });*/
+      });
 
+    it('Post a creacion de un file tiene status 201', (done) => {
+      chai.request(server)
+          .post('/api/files')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .send({"filename":"superfile",
+                 "id":"a",
+                 "_rev":"asd",
+                 "size":1,
+                 "resource":"deporhay"
+                })
+          .end((err, res) => {
+              res.should.have.status(201);
+              done();
+            });
+      });
+
+    it('Get de todos los file con token incorrecto tiene status 401', (done) => {
+      chai.request(server)
+          .get('/api/files')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+    it('Get del file con token incorrecto tiene status 401', (done) => {
+      chai.request(server)
+          .get('/api/files/a')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+      it('Get del file con id incorrecto tiene status 404', (done) => {
+        chai.request(server)
+            .get('/api/files/b')
+            .set('content-type', 'application/json')
+            .query({BusinessToken:"9081726354"})
+            .end((err, res) => {
+                res.should.have.status(404);
+                done();
+              });
+        });
+
+    it('Get del file tiene status 200', (done) => {
+      chai.request(server)
+          .get('/api/files/a')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+
+    it('Delete del file con token incorrecto tiene status 401', (done) => {
+      chai.request(server)
+          .get('/api/files/a')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+      it('Delete del file tiene status 404', (done) => {
+        chai.request(server)
+            .delete('/api/files/b')
+            .set('content-type', 'application/json')
+            .query({BusinessToken:"9081726354"})
+            .end((err, res) => {
+                res.should.have.status(404);
+                done();
+              });
+        });
+
+    it('Delete del file tiene status 204', (done) => {
+      chai.request(server)
+          .delete('/api/files/a')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(204);
+              done();
+            });
+      });
 
     /*ACA TERMINAMOS A PROBAR EL MODULO FILES*/
   it('Delete al usuario creado anteriormente tiene status 204', (done) => {
