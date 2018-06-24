@@ -7,7 +7,7 @@ module.exports = {
     /* CREATE FILE*/
     create: function (req, res) {
 
-        User.find({
+        return User.find({
             where: {token: req.query.BusinessToken}
         })
             .then(user => {
@@ -251,4 +251,3 @@ module.exports = {
     },*/
 
 };
-

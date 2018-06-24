@@ -290,4 +290,3 @@ function hash(str){
     }
     return hash;
 }
-

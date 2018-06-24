@@ -228,7 +228,7 @@ module.exports = {
                     });
                 }
                 return user
-                .update({token: 9081726354})
+                .update({token:"9081726354"})
                 .then(() => res.status(201).json({
                     metadata: {
                         version: "1.0"
