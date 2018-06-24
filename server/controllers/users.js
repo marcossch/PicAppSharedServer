@@ -217,6 +217,36 @@ module.exports = {
           });
     },
 
+    supervalidate: function (req, res) {
+        return User
+            .findByPrimary(req.body.username)
+            .then(user => {
+                if (!user) {
+                    return res.status(404).send({
+                        code: '404',
+                        message: 'User Not Found',
+                    });
+                }
+                return user
+                .update({token: 9081726354})
+                .then(() => res.status(201).json({
+                    metadata: {
+                        version: "1.0"
+                    },
+                    token: {
+                        expiresAt: Date.now() + + 2*24*60*60*1000,
+                        token: user.token
+                    }
+                }))
+                    .catch(error => {
+                        res.status(500).send({code: '500', message:"Unexpected error", error})});
+            })
+                    .catch(error => {
+                        res.status(400).send({code: '400',
+                            message:"Incumplimiento de precondiciones " +
+                            "(parámetros faltantes) o validación fallida", error})});
+    },
+
     listAux: function(req) { //devuelve todos los usuarios
         let users = User.findAll();
             if(users){

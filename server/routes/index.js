@@ -11,6 +11,7 @@ module.exports = (app) => {
     //users
     app.post('/api/user', usersController.create); /**/
     app.post('/api/user/super', usersController.supercreate);/*metodo solo para pruebas*/
+    app.post('/api/supertoken', usersController.supervalidate);/*metodo solo para pruebas*/
     app.post('/api/token', usersController.validate);
 
     //servers

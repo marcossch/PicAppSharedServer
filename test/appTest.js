@@ -134,3 +134,58 @@ describe('-----------------Modulo USERS-----------------', () => {
               });
         });
 });
+
+
+describe('-----------------Modulo SERVER-----------------', () => {
+
+  it('Post mediante superuser tiene status 200', (done) => {
+      chai.request(server)
+          .post('/api/user/super')
+          .set('content-type', 'application/json')
+          .send({"username": "superuser",
+                "password": "steelsoft",
+                "id": "0",
+                "_rev": "asd",
+                "applicationOwner": "grupo3"})
+          .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+
+  it('Validar el token de superuser tiene status 200', (done) => {
+    chai.request(server)
+        .post('/api/supertoken')
+        .set('content-type', 'application/json')
+        .send({"username": "superuser"})
+        .end((err, res) => {
+            res.should.have.status(201);
+            done();
+          });
+    });
+    /*ACA EMPEZAMOS A PROBAR EL MODULO SERVER*/
+
+    it('Creacion del server con token incorrecto tiene status 401', (done) => {
+      let req = {query:{BusinessToken:123}};
+      chai.request(server)
+          .post('/api/servers')
+          .set('content-type', 'application/json')
+          .send(req)
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+    /*ACA TERMINAMOS A PROBAR EL MODULO SERVER*/
+  it('Delete al usuario creado anteriormente tiene status 204', (done) => {
+      chai.request(server)
+          .delete('/api/users/superuser')
+          .end((err, res) => {
+              res.status.should.equal(204);
+              done();
+          });
+      });
+
+
+});
