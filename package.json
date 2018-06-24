@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "cover": "export NODE_ENV=test && npm run db:migrate && istanbul cover _mocha --exit -- -R spec",
+    "cover": "istanbul cover _mocha --exit -- -R spec",
     "test": "mocha --exit",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
     "ltest": "export NODE_ENV=test && npm run uTest",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "axios": "^0.18.0",
+    "babel": "^6.23.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.0.0",

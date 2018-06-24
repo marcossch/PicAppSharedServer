@@ -153,7 +153,7 @@ describe('-----------------Modulo SERVER-----------------', () => {
             });
       });
 
-  it('Validar el token de superuser tiene status 200', (done) => {
+  it('Post mediant supertoken de superuser tiene status 200', (done) => {
     chai.request(server)
         .post('/api/supertoken')
         .set('content-type', 'application/json')
@@ -165,20 +165,18 @@ describe('-----------------Modulo SERVER-----------------', () => {
     });
     /*ACA EMPEZAMOS A PROBAR EL MODULO SERVER*/
 
-    it('Creacion del server con token incorrecto tiene status 401', (done) => {
-      req = {query:{BusinessToken:"123"}};
+    it('Post a creacion del server con token incorrecto tiene status 401', (done) => {
       chai.request(server)
           .post('/api/servers')
           .set('content-type', 'application/json')
           .query({BusinessToken:"123"})
-          .send(req)
           .end((err, res) => {
               res.should.have.status(401);
               done();
             });
       });
 
-    it('Creacion del server con parametros incorrectos tiene status 400', (done) => {
+    it('Post a creacion del server con parametros incorrectos tiene status 400', (done) => {
       req = {query:{
                   BusinessToken:9081726354
                 },
@@ -193,8 +191,67 @@ describe('-----------------Modulo SERVER-----------------', () => {
           .query({BusinessToken:"9081726354"})
           .send(req)
           .end((err, res) => {
-              console.log(res.body);
               res.should.have.status(400);
+              done();
+            });
+      });
+
+    it('Post a creacion del server con parametros correctos tiene status 201', (done) => {
+      chai.request(server)
+          .post('/api/servers')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .send({"name":"superserver",
+                 "id":0,
+                 "_rev":"1.0",
+                 "createdBy":"grupo3"
+                })
+          .end((err, res) => {
+              res.should.have.status(201);
+              done();
+            });
+      });
+
+    it('Get del server recientemente creado con token invalido tiene status 401', (done) => {
+      chai.request(server)
+          .get('/api/servers/0')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+      it('Get del server recientemente creado con id invalido tiene status 400', (done) => {
+        chai.request(server)
+            .get('/api/servers/10')
+            .set('content-type', 'application/json')
+            .query({BusinessToken:"9081726354"})
+            .end((err, res) => {
+                res.should.have.status(404);
+                done();
+              });
+        });
+
+    it('Get del server recientemente creado tiene status 200', (done) => {
+      chai.request(server)
+          .get('/api/servers/0')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+
+    it('Get de todos los servers tiene status 200', (done) => {
+      chai.request(server)
+          .get('/api/servers')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .end((err, res) => {
+              res.should.have.status(200);
               done();
             });
       });
