@@ -2,3 +2,8 @@ codecov:
   token: bffb0e55-cb81-490c-a8db-0c7308611d1f
 ignore:
   - test/*
+  - node_modules/*
+  - bin/*
+  - server/config/*
+  - server/migrations/*
+  - server/routes/*
