@@ -177,6 +177,22 @@ describe('-----------------Modulo SERVER-----------------', () => {
             });
       });
 
+      /*it('Creacion del server con parametros incorrectos tiene status 400', (done) => {
+        let req = {query:{BusinessToken:9081726354},
+                  body:{
+                    name:"superserver"
+                  }
+                    };
+        chai.request(server)
+            .post('/api/servers')
+            .set('content-type', 'application/json')
+            .send(req)
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+              });
+        });*/
+
     /*ACA TERMINAMOS A PROBAR EL MODULO SERVER*/
   it('Delete al usuario creado anteriormente tiene status 204', (done) => {
       chai.request(server)
