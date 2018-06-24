@@ -1,4 +1,4 @@
 codecov:
   token: bffb0e55-cb81-490c-a8db-0c7308611d1f
 ignore:
-  - "/test"
+  - test/*

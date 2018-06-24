@@ -15,7 +15,8 @@
       "database": "d2s7harvquabgr",
       "user": "iziaozkezmazle",
       "password": "d0222eb652d5988f157acccb1e2556a3e045e9e7d51a0cf8b53eddbb68dc5d11"
-    }
+    },
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
@@ -25,6 +26,4 @@
     "port": 5432,
     "dialect": "postgres"
   }
-
-
 }

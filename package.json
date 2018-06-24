@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "cover": "istanbul cover _mocha",
+    "cover": "export NODE_ENV=test && istanbul cover _mocha --exit",
     "test": "mocha --exit",
-    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
-    "desmi": "sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo",
-    "ltest": "export NODE_ENV=test && npm run uTest"
+    "ltest": "export NODE_ENV=test && npm run uTest",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "desmi": "sequelize db:migrate:undo && sequelize db:migrate:undo && sequelize db:migrate:undo"
   },
   "repository": {
     "type": "git",
