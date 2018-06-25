@@ -25,10 +25,10 @@ before_script:
   - npm run db:migrate
 
 script:
+    - nyc --reporter=html --reporter=text mocha --exit
     - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
-  - nyc --reporter=html --reporter=text mocha --exit
   - npm run test
 
 env:
