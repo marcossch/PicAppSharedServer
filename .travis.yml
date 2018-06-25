@@ -25,7 +25,7 @@ before_script:
   - npm run db:migrate
 
 script:
-    - nyc report --reporter=html --reporter=text-lcov mocha --exit > coveralls
+    - nyc report --reporter=text --reporter=html mocha --exit
     - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
