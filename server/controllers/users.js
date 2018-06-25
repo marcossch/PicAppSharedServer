@@ -245,15 +245,6 @@ module.exports = {
                         res.status(400).send({code: '400',
                             message:"Incumplimiento de precondiciones " +
                             "(parámetros faltantes) o validación fallida", error})});
-    },
-
-    listAux: function(req) { //devuelve todos los usuarios
-        let users = User.findAll();
-            if(users){
-              return {code: 200,
-                      res: users};
-            }
-            return {code:500};
     }
 
 };

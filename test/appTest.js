@@ -41,6 +41,34 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
+    it('Post mediante superuser sin pass tiene status 400', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "sinPass",
+                  "id": "0",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+              });
+        });
+
+    it('Post mediante superuser sin id tiene status 400', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "sinPass",
+                  "password": "0",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+              });
+        });
+
     it('Post mediante superuser tiene status 200', (done) => {
         chai.request(server)
             .post('/api/user/super')
@@ -78,6 +106,15 @@ describe('-----------------Modulo USERS-----------------', () => {
               });
         });
 
+    it('Get a usuario inexistente tiene status 404', (done) => {
+        chai.request(server)
+            .get('/api/users/pepe')
+            .end((err, res) => {
+                res.status.should.equal(404);
+                done();
+            });
+        });
+
     it('Get al usuario creado anteriormente tiene status 200', (done) => {
         chai.request(server)
             .get('/api/users/superuser')
@@ -87,7 +124,75 @@ describe('-----------------Modulo USERS-----------------', () => {
             });
         });
 
-    it('Delete al usuario creado anteriormente tiene status 204', (done) => {
+    it('Post mediante superuser con el mismo id tiene status 400', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "superuser2",
+                  "password": "steelsoft",
+                  "id": "0",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+              });
+        });
+
+    it('Post mediante superuser tiene status 200', (done) => {
+        chai.request(server)
+            .post('/api/user/super')
+            .set('content-type', 'application/json')
+            .send({"username": "superuser2",
+                  "password": "steelsoft",
+                  "id": "1",
+                  "_rev": "asd",
+                  "applicationOwner": "grupo3"})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+              });
+        });
+
+    it('Get de todos los usuarios tiene status 200 y longitud 2', (done) => {
+        chai.request(server)
+            .get('/api/users/')
+            .end((err, res) => {
+                res.status.should.equal(200);
+                res.body.length.should.equal(2);
+                done();
+            });
+        });
+
+    it('Delete al usuario superuser2 tiene status 204', (done) => {
+        chai.request(server)
+            .delete('/api/users/superuser2')
+            .end((err, res) => {
+                res.status.should.equal(204);
+                done();
+            });
+        });
+
+    it('Delete a usuario inexistente tiene status 404', (done) => {
+        chai.request(server)
+            .delete('/api/users/pepe')
+            .end((err, res) => {
+                res.status.should.equal(404);
+                done();
+            });
+        });
+
+    it('Get de todos los usuarios tiene status 200 y longitud 1', (done) => {
+        chai.request(server)
+            .get('/api/users/')
+            .end((err, res) => {
+                res.status.should.equal(200);
+                res.body.length.should.equal(1);
+                done();
+            });
+        });
+
+    it('Delete al usuario superuser tiene status 204', (done) => {
         chai.request(server)
             .delete('/api/users/superuser')
             .end((err, res) => {
@@ -103,34 +208,6 @@ describe('-----------------Modulo USERS-----------------', () => {
                 res.status.should.equal(404);
                 done();
             });
-        });
-
-    it('Post mediante superuser sin pass tiene status 400', (done) => {
-        chai.request(server)
-            .post('/api/user/super')
-            .set('content-type', 'application/json')
-            .send({"username": "sinPass",
-                  "id": "0",
-                  "_rev": "asd",
-                  "applicationOwner": "grupo3"})
-            .end((err, res) => {
-                res.should.have.status(400);
-                done();
-              });
-        });
-
-    it('Post mediante superuser sin id tiene status 400', (done) => {
-        chai.request(server)
-            .post('/api/user/super')
-            .set('content-type', 'application/json')
-            .send({"username": "sinPass",
-                  "password": "0",
-                  "_rev": "asd",
-                  "applicationOwner": "grupo3"})
-            .end((err, res) => {
-                res.should.have.status(400);
-                done();
-              });
         });
 });
 
@@ -152,7 +229,7 @@ describe('-----------------Modulo SERVER-----------------', () => {
             });
       });
 
-  it('Post mediant supertoken de superuser tiene status 200', (done) => {
+  it('Post mediante supertoken de superuser tiene status 200', (done) => {
     chai.request(server)
         .post('/api/supertoken')
         .set('content-type', 'application/json')
