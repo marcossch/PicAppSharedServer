@@ -8,7 +8,7 @@ node_js:
 
 postgres:
   adapter: postgresql
-  database: testing_db
+  database: webuserdb
 
 install:
   - npm install --save-dev mocha
