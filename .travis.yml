@@ -8,7 +8,7 @@ node_js:
 
 postgres:
   adapter: postgresql
-  database: webuserdb
+  database: testing_db
 
 install:
   - npm install --save-dev mocha
@@ -20,8 +20,8 @@ install:
   - npm install --save-dev nyc
 
 before_script:
-  - psql -c "CREATE DATABASE webuserdb;" -U postgres
-  - psql -c "CREATE USER marc WITH LOGIN PASSWORD '1234';" -U postgres
+  - psql -c "CREATE DATABASE testing_db;" -U postgres
+  - psql -c "CREATE USER root WITH LOGIN PASSWORD 'root';" -U postgres
   - npm run db:migrate
 
 script:
