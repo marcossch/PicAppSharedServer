@@ -17,6 +17,7 @@ install:
 
   - npm install --save-dev codecov
   - npm install --save-dev istanbul
+  - npm install --save-dev nyc
 
 before_script:
   - psql -c "CREATE DATABASE testing_db;" -U postgres
@@ -27,7 +28,7 @@ script:
     - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
-  - istanbul cover _mocha --exit -- -R spec
+  - nyc --reporter=html --reporter=text mocha --exit
   - npm run test
 
 env:
