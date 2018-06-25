@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "cover": "istanbul cover _mocha --exit -- -R spec",
+    "cover": "export NODE_ENV=test && sequelize db:migrate && nyc --reporter=html --reporter=text mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "mocha --exit",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
     "ltest": "export NODE_ENV=test && npm run uTest",
@@ -37,6 +38,7 @@
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.0.0",
     "codecov": "^3.0.0",
+    "coveralls": "^3.0.1",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.2.0",
     "nock": "^9.0.13",
