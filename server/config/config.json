@@ -19,9 +19,9 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": "root",
-    "database": "testing_db",
+    "username": "marc",
+    "password": "1234",
+    "database": "webusersdb",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
