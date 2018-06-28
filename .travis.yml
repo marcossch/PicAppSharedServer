@@ -10,6 +10,15 @@ postgres:
   adapter: postgresql
   database: testing_db
 
+install:
+  - npm install --save-dev mocha
+  - npm install --save-dev chai
+  - npm install --save-dev chai-http
+
+  - npm install --save-dev codecov
+  - npm install --save-dev istanbul
+  - npm install --save-dev nyc
+
 before_script:
   - psql -c "CREATE DATABASE testing_db;" -U postgres
   - psql -c "CREATE USER root WITH LOGIN PASSWORD 'root';" -U postgres
