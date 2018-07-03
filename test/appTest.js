@@ -673,7 +673,7 @@ describe('-----------------Modulo FILES-----------------', () => {
             });
       });
 
-    it('Post a creacion de un file tiene status 201', (done) => {
+    it('Post a creacion de otro file tiene status 201', (done) => {
       chai.request(server)
           .post('/api/files')
           .set('content-type', 'application/json')
