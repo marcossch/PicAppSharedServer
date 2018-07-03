@@ -25,8 +25,7 @@ before_script:
   - npm run db:migrate
 
 script:
-    - nyc --reporter=html mocha --recursive --exit --timeout 60000
-    - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
+    - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f nyc --reporter=html mocha --recursive --exit --timeout 60000
 
 after_success:
   - npm run test
