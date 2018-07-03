@@ -6,8 +6,8 @@
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "cover": "export NODE_ENV=test && sequelize db:migrate && nyc report --reporter=text --reporter=html mocha --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "mocha --exit",
+    "coverage": "export NODE_ENV=test && sequelize db:migrate && nyc npm test && npm run desmi",
+    "test": "mocha --recursive --exit --timeout 60000",
     "uTest": "npm run desmi && sequelize db:migrate && npm run test && npm run desmi",
     "ltest": "export NODE_ENV=test && npm run uTest",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
