@@ -26,7 +26,7 @@ before_script:
 
 script:
     - nyc --reporter=html mocha --recursive --exit --timeout 60000
-    - istanbul cover node_modules/mocha/bin/_mocha --exit -- -R spec
+    - codecov -t bffb0e55-cb81-490c-a8db-0c7308611d1f
 
 after_success:
   - npm run test
