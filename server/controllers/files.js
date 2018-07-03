@@ -227,27 +227,5 @@ module.exports = {
                 }
             })
             .catch(error => res.status(500).send({code: '500', message:"Unexpected error", error}));
-    },
-
-
-    /* Upload de un File */
-
-    /*update(req, res) {
-
-        Server.find({
-            where: {token: req.query.ApplicationToken}
-        })
-            .then(server => {
-                if (!server) {
-                    return res.status(401).send({
-                        code: '401',
-                        message: 'Unauthorized',
-                    });
-                }
-                else {
-
-                }
-            }).catch(error => res.status(500).send({code: '500', message:"Unexpected error", error}));
-    },*/
-
+    }
 };

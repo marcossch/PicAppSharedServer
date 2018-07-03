@@ -656,6 +656,40 @@ describe('-----------------Modulo FILES-----------------', () => {
             });
       });
 
+    it('Post a creacion de un file con los mismos parametros tiene status 400', (done) => {
+      chai.request(server)
+          .post('/api/files')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .send({"filename":"superfile",
+                 "id":"a",
+                 "_rev":"asd",
+                 "size":1,
+                 "resource":"deporhay"
+                })
+          .end((err, res) => {
+              res.should.have.status(400);
+              done();
+            });
+      });
+
+    it('Post a creacion de un file tiene status 201', (done) => {
+      chai.request(server)
+          .post('/api/files')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .send({"filename":"superfile2",
+                 "id":"b",
+                 "_rev":"asd",
+                 "size":1,
+                 "resource":"deporhay"
+                })
+          .end((err, res) => {
+              res.should.have.status(201);
+              done();
+            });
+      });
+
     it('Delete del file con token incorrecto tiene status 401', (done) => {
       chai.request(server)
           .get('/api/files/a')
@@ -669,7 +703,7 @@ describe('-----------------Modulo FILES-----------------', () => {
 
       it('Delete del file tiene status 404', (done) => {
         chai.request(server)
-            .delete('/api/files/b')
+            .delete('/api/files/z')
             .set('content-type', 'application/json')
             .query({BusinessToken:"9081726354"})
             .end((err, res) => {
@@ -680,7 +714,7 @@ describe('-----------------Modulo FILES-----------------', () => {
 
     it('Delete del file tiene status 204', (done) => {
       chai.request(server)
-          .delete('/api/files/a')
+          .delete('/api/files/b')
           .set('content-type', 'application/json')
           .query({BusinessToken:"9081726354"})
           .end((err, res) => {
@@ -688,6 +722,58 @@ describe('-----------------Modulo FILES-----------------', () => {
               done();
             });
       });
+
+    it('Put a update de un file con token incorrecto tiene status 401', (done) => {
+      chai.request(server)
+          .put('/api/files/a')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"123"})
+          .send({"filename":"superfile2",
+                 "id":"b",
+                 "_rev":"asd",
+                 "size":1,
+                 "resource":"deporhay"
+                })
+          .end((err, res) => {
+              res.should.have.status(401);
+              done();
+            });
+      });
+
+    it('Put a update de un file con id incorrecto tiene status 404', (done) => {
+      chai.request(server)
+          .put('/api/files/asad')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .send({"filename":"superfile2",
+                 "id":"b",
+                 "_rev":"asd",
+                 "size":1,
+                 "resource":"deporhay"
+                })
+          .end((err, res) => {
+              res.should.have.status(404);
+              done();
+            });
+      });
+
+    it('Put a update de un file tiene status 200', (done) => {
+      chai.request(server)
+          .put('/api/files/a')
+          .set('content-type', 'application/json')
+          .query({BusinessToken:"9081726354"})
+          .send({"filename":"file",
+                 "id":"c",
+                 "_rev":"asd",
+                 "size":1,
+                 "resource":"deporhay"
+                })
+          .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+
 
     /*ACA TERMINAMOS A PROBAR EL MODULO FILES*/
   it('Delete al usuario creado anteriormente tiene status 204', (done) => {
