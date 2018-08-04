@@ -1,4 +1,21 @@
-# PicAppSharedServer
+![alt text](https://github.com/marcossch/PicAppAndroid/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
+# PicApp - Shared Server
+## Languages and Technologies: 
+NodeJS, ExpressJS, PostgreSQL, Sequelize, Heroku, Docker, Travis, CodeCov.
+
+---
+The complete project involved the end-to-end development of a social media mobile app with android support. 
+The app is made up of three main parts:
+* A server (Application Server), responsible for conecting the users. It can be found [here](https://github.com/RodrigoDeRosa/PicappAppServer)
+* A server (Shared Server), responsible for administrating the application servers, user authentication, and files handling. It can be found [here](https://github.com/marcossch/PicAppSharedServer)
+* An Android client to be used by the final users. It can be found [here](https://github.com/marcossch/PicAppAndroid)
+
+My personal involvement in the project was on the Android Client and the Shared Server.
+
+## Shared Server
+
+![alt text](https://github.com/marcossch/PicAppSharedServer/blob/master/Enunciado/images/shared_server.png)
 
 ## Travis
 
@@ -18,7 +35,7 @@ console in the project directory and running the following commands:
 
     $ ./docker-run.sh
 
-And this one will start listening on [localhost:3000](https://localhost:3000).
+Now it will start listening on [localhost:3000](https://localhost:3000).
 You can stop it anytime with CTRL+C. You need to leave this terminal open.
 
 Then open a new terminal on the same directory and run:
@@ -50,11 +67,16 @@ You can see the interface of this Application Server
 
 **NOTES**
 
-###### para levantar las tablas de la db:
+###### To run the db tables:
     $ heroku run sequelize db:migrate
 
-###### para dar de baja las tablas de la db:
+###### To clean the db tables:
     $ heroku run sequelize db:migrate:undo
 
-###### Para correr las pruebas localmente:
+###### To run tests locally:
     $ npm run uTest
+
+---
+
+#### Facultad de Ingeniería de la Universidad de Buenos Aires
+#### TP TALLER DE PROGRAMACION II 75.52
